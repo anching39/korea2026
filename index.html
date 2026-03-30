@@ -28,6 +28,28 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html {
+    font-size: 18px;
+  }
+
+  /* 小字統一 16px */
+  .timeline-card-subtitle,
+  .timeline-time,
+  .flight-date,
+  .hotel-address,
+  .booking-id,
+  .flight-number,
+  .flight-duration,
+  .transit-label,
+  .transit-duration,
+  .header-dates,
+  .day-date,
+  .badge,
+  .hero-subtitle,
+  .footer {
+    font-size: 16px !important;
+  }
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -169,7 +191,7 @@
   }
 
   .section-label {
-    font-size: 0.7rem;
+    font-size: 18px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--text-muted);
@@ -247,7 +269,7 @@
   }
 
   .city-name {
-    font-size: 0.72rem;
+    font-size: 16px;
     color: var(--text-muted);
     margin-top: 3px;
   }
@@ -602,16 +624,16 @@
   }
 
   .transit-icon-wrap {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 43px;
+    height: 43px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
+    font-size: 34px;
     flex-shrink: 0;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: var(--bg2);
+    border: none;
+    background: transparent;
   }
 
   .transit-body {
@@ -664,12 +686,8 @@
 <!-- Sticky Header -->
 <div class="sticky-header">
   <div>
-    <div class="header-title">🇰🇷 釜山三天二夜</div>
+    <div class="header-title">2026釜山</div>
     <div class="header-dates">2026.05.09 — 2026.05.11</div>
-  </div>
-  <div style="text-align:right">
-    <div style="font-size:0.78rem;color:var(--text-muted)">Eastar Jet</div>
-    <div style="font-size:0.65rem;color:var(--text-muted)">ZE988 / ZE983</div>
   </div>
 </div>
 
@@ -713,8 +731,8 @@
     </div>
     <div class="flight-date">📅 2026年5月9日（星期六）</div>
     <div style="margin-top:10px; display:flex; gap:8px;">
-      <a href="https://map.naver.com/p/search/桃園國際機場" target="_blank" class="map-btn">📍 桃園機場</a>
-      <a href="https://map.naver.com/p/search/부산김해국제공항" target="_blank" class="map-btn">📍 金海機場</a>
+      <a href="https://maps.app.goo.gl/wDbCatFk61xow7x16" target="_blank" class="map-btn" style="background:rgba(66,133,244,0.12);border-color:rgba(66,133,244,0.25);color:#4285f4;">📍 桃園機場</a>
+      <a href="https://maps.app.goo.gl/yi3hNZUD464dttV57" target="_blank" class="map-btn" style="background:rgba(66,133,244,0.12);border-color:rgba(66,133,244,0.25);color:#4285f4;">📍 金海機場</a>
     </div>
   </div>
 
@@ -776,37 +794,35 @@
 
   <div class="timeline">
 
-    <!-- 🚇 機場 → 飯店 交通 -->
+    <!-- 🚊 機場 → 飯店 交通 -->
     <div class="timeline-item">
       <div class="timeline-dot" style="background:linear-gradient(135deg,#c084fc,#56ccf2);box-shadow:0 0 10px rgba(192,132,252,0.5);"></div>
       <div class="timeline-card" style="border-color:rgba(192,132,252,0.2);">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#c084fc,#56ccf2);border-radius:14px 14px 0 0;"></div>
-        <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#c084fc;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:10px;">✈️ 機場 → 飯店</div>
+        <div style="font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:#c084fc;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:10px;">✈️ 機場 → 飯店</div>
 
         <!-- 第一段：輕軌 -->
         <div style="display:flex;align-items:flex-start;gap:10px;">
           <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div style="width:28px;height:28px;border-radius:8px;background:rgba(192,132,252,0.15);border:1px solid rgba(192,132,252,0.3);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;">🚇</div>
-            <div style="width:1px;height:18px;background:linear-gradient(180deg,rgba(192,132,252,0.4),rgba(86,204,242,0.4));margin:3px 0;"></div>
-            <div style="font-size:0.6rem;color:var(--text-muted);font-family:'Space Grotesk',sans-serif;letter-spacing:0.05em;">轉</div>
-            <div style="width:1px;height:18px;background:linear-gradient(180deg,rgba(86,204,242,0.4),rgba(86,204,242,0.2));margin:3px 0;"></div>
+            <div style="width:32px;height:32px;border-radius:8px;background:rgba(192,132,252,0.15);border:1px solid rgba(192,132,252,0.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🚝</div>
+            <div style="width:1px;height:36px;background:linear-gradient(180deg,rgba(192,132,252,0.4),rgba(86,204,242,0.4));margin:3px 0;"></div>
           </div>
           <div style="flex:1;padding-top:4px;">
-            <div style="font-size:0.75rem;font-weight:600;color:#c084fc;font-family:'Space Grotesk',sans-serif;">釜山金海輕軌</div>
-            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px;">金海國際機場 → 沙上站</div>
+            <div style="font-size:16px;font-weight:600;color:#c084fc;font-family:'Space Grotesk',sans-serif;">釜山金海輕軌</div>
+            <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">金海國際機場 → 沙上站</div>
           </div>
         </div>
 
         <!-- 第二段：地鐵 -->
         <div style="display:flex;align-items:flex-start;gap:10px;margin-top:2px;">
-          <div style="width:28px;height:28px;border-radius:8px;background:rgba(86,204,242,0.12);border:1px solid rgba(86,204,242,0.25);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;">🚇</div>
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(86,204,242,0.12);border:1px solid rgba(86,204,242,0.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🚊</div>
           <div style="flex:1;padding-top:4px;">
-            <div style="font-size:0.75rem;font-weight:600;color:#56ccf2;font-family:'Space Grotesk',sans-serif;">地鐵 2 號線</div>
-            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px;">沙上站 → 海雲台站</div>
+            <div style="font-size:16px;font-weight:600;color:#56ccf2;font-family:'Space Grotesk',sans-serif;">地鐵 2 號線</div>
+            <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">沙上站 → 海雲台站</div>
           </div>
         </div>
 
-        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📌 抵達後辦理入住，出發</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📌 抵達後辦理入住，出發</div>
       </div>
     </div>
 
@@ -821,9 +837,9 @@
           </div>
         </div>
         <div class="tags-row" style="margin-top:8px;">
-          <span class="hotel-badge" style="font-size:0.68rem;">🏨 住宿</span>
-          <span class="hotel-badge" style="font-size:0.68rem;background:rgba(255,107,157,0.1);border-color:rgba(255,107,157,0.2);color:#ff6b9d;">🚀 出發前往第一站</span>
+          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
         </div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">出發前往第一站</div>
       </div>
     </div>
 
@@ -844,15 +860,17 @@
         <div class="timeline-card-header">
           <div>
             <span class="num-badge">1</span>
-            <span class="timeline-card-title">모모스커피 마린시티점 <span style="font-size:0.72rem;font-weight:400;color:#f9ca24;">（世界百大）</span></span>
+            <span class="timeline-card-title">모모스커피 마린시티점 <span style="font-size:16px;font-weight:400;color:#f9ca24;">（世界百大）</span></span>
           </div>
         </div>
-        <div class="timeline-card-subtitle">☕ 海景精品咖啡 ｜ 早餐</div>
-        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:2px;">釜山广域市 海云台区 佑洞 1410-1</div>
+        <div class="timeline-card-subtitle">Momos Coffee Marine City</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 海云台区 佑洞 1410-1</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">🕐 07:00 – 18:00</div>
         <div class="tags-row">
           <span class="food-option">☕ 咖啡</span>
         </div>
         <a href="https://naver.me/IFE6BqhX" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">吃早餐了</div>
       </div>
     </div>
 
@@ -876,14 +894,14 @@
             <span class="timeline-card-title">海雲台藍線公園</span>
           </div>
         </div>
-        <div class="timeline-card-subtitle">🎡 搭膠囊列車</div>
         <div class="tags-row">
-          <span class="food-option" style="background:rgba(86,204,242,0.1);border-color:rgba(86,204,242,0.2);color:#56ccf2;">🌊 美景</span>
+          <span class="food-option">🌊 美景</span>
         </div>
-        <div style="margin-top:8px;font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+        <div style="margin-top:8px;font-size:16px;color:var(--text-muted);line-height:1.6;">
           📍 尾浦 <span style="color:var(--text-muted)">→</span> <span class="highlight-text">青沙浦</span>
         </div>
-        <a href="https://naver.me/GVV8P9Yg" target="_blank" class="map-btn">📍 尾浦站 NAVER Map</a>
+        <a href="https://naver.me/GVV8P9Yg" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">🚂 搭膠囊列車</div>
       </div>
     </div>
 
@@ -898,13 +916,13 @@
             <span class="timeline-card-title">青沙浦</span>
           </div>
         </div>
-        <div class="timeline-card-subtitle">📸 下車後直接吃＋拍照</div>
         <div class="tags-row">
           <span class="food-option">🦪 烤貝</span>
           <span class="food-option">🦞 海鮮</span>
           <span class="food-option">☕ 咖啡廳</span>
         </div>
-        <a href="https://naver.me/GVV8P9Yg" target="_blank" class="map-btn">📍 青沙浦 NAVER Map</a>
+        <a href="https://naver.me/GVV8P9Yg" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📸 下車後直接吃＋拍照</div>
       </div>
     </div>
   </div>
@@ -937,7 +955,7 @@
           </div>
         </div>
         <div class="timeline-card-subtitle">☕ Blue Bottle Coffee<br>🌉 看廣安大橋 ＋ 放鬆</div>
-        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;">釜山广域市 水营区 民乐洞 336-10</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山广域市 水营区 民乐洞 336-10</div>
         <div class="tags-row">
           <span class="food-option">☕ 咖啡</span>
         </div>
@@ -966,7 +984,7 @@
           </div>
         </div>
         <div class="timeline-card-subtitle">🛍 購物 ｜ 全球最大百貨公司之一</div>
-        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;">釜山广域市 海云台区 佑洞 1495</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山广域市 海云台区 佑洞 1495</div>
         <div class="tags-row">
           <span class="food-option" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.2);color:#c084fc;">🛍 購物</span>
         </div>
@@ -975,11 +993,11 @@
     </div>
   </div>
 
-  <!-- 🚇 新世界 → 廣安里 -->
+  <!-- 🚊 新世界 → 廣安里 -->
   <div class="transit-connector transit-metro" style="margin-left:0;padding:8px 0;padding-left:32px;">
-    <div class="transit-icon-wrap">🚇</div>
+    <div class="transit-icon-wrap">🚊</div>
     <div class="transit-body">
-      <div class="transit-label"><strong>地鐵 2 號線</strong>　Centum City → 廣安里</div>
+      <div class="transit-label"><strong>地鐵 2 號線</strong>　Centum City → 廣安里（出口5）</div>
       <div class="transit-duration">約 10 分鐘</div>
     </div>
   </div>
@@ -1004,23 +1022,23 @@
           </div>
         </div>
         <div class="timeline-card-subtitle">
-          🌃 夜景：廣安大橋<br>
-          ✨ 釜山最美夜景之一
+          🌃 夜景：廣安大橋　✨ 釜山最美夜景之一
         </div>
-        <div style="font-size:0.7rem;color:var(--text-muted);margin-top:4px;">釜山广域市 水营区 民乐洞 192-7</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山广域市 水营区 民乐洞 192-7</div>
         <div class="tags-row">
-          <span class="food-option" style="background:rgba(86,204,242,0.1);border-color:rgba(86,204,242,0.2);color:#56ccf2;">🌊 美景</span>
+          <span class="food-option">🌊 美景</span>
         </div>
-        <a href="https://naver.me/G7NoauMe" target="_blank" class="map-btn">📍 廣安里 NAVER Map</a>
+        <a href="https://naver.me/G7NoauMe" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">🚁 無人機表演：20:00 和 22:00</div>
 
       </div>
     </div>
 
   </div>
 
-  <!-- 🚇 廣安里 → 飯店 -->
+  <!-- 🚊 廣安里 → 飯店 -->
   <div class="transit-connector transit-metro" style="margin-left:0;padding:8px 0;padding-left:32px;">
-    <div class="transit-icon-wrap">🚇</div>
+    <div class="transit-icon-wrap">🚊</div>
     <div class="transit-body">
       <div class="transit-label"><strong>地鐵 2 號線</strong>　廣安里 → 海雲台</div>
       <div class="transit-duration">約 15 分鐘</div>
@@ -1032,11 +1050,11 @@
       <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
       <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f9ca24,#f0932b);border-radius:14px 14px 0 0;"></div>
-        <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#f9ca24;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:6px;">🏨 回飯店</div>
+        <div style="font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:#f9ca24;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:6px;">🏨 回飯店</div>
         <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
-        <div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">釜山広域市 海雲台区 佑洞 539-10</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山広域市 海雲台区 佑洞 539-10</div>
         <div class="tags-row" style="margin-top:8px;">
-          <span class="hotel-badge" style="font-size:0.68rem;">🏨 住宿</span>
+          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
         </div>
         <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:8px;">📍 NAVER Map</a>
       </div>
@@ -1045,7 +1063,7 @@
 
 </div>
 
-<!-- ===== DAY 2 & 3 placeholder ===== -->
+<!-- ===== DAY 2 ===== -->
 <div class="section-divider"></div>
 <div class="day-section">
   <div class="day-label-wrap">
@@ -1053,9 +1071,156 @@
     <div class="day-date">5月10日（日）</div>
     <div class="day-divider"></div>
   </div>
-  <div style="background:var(--card);border:1px dashed var(--card-border);border-radius:14px;padding:20px;text-align:center;color:var(--text-muted);font-size:0.82rem;">
-    ✏️ 行程待規劃<br>
-    <span style="font-size:0.7rem;opacity:0.6;">Day 2 coming soon...</span>
+
+  <!-- 早上 -->
+  <div class="period-header">
+    <span class="period-icon">☀️</span>
+    <span class="period-title morning">Morning · 早上</span>
+  </div>
+
+  <div class="timeline">
+
+    <!-- 🏨 飯店出發 -->
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
+      <div class="timeline-card" style="border-color:rgba(249,202,36,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:1rem;">🏨</span>
+          <div>
+            <div style="font-size:0.9rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
+          </div>
+        </div>
+        <div class="tags-row" style="margin-top:8px;">
+          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
+        </div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">出發前往第一站</div>
+      </div>
+    </div>
+
+    <!-- 🚕 飯店 → 스릴온더머그 -->
+    <div class="transit-connector transit-taxi" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚕</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>計程車</strong>　飯店 → 스릴온더머그</div>
+        <div class="transit-duration">約 60 分鐘</div>
+      </div>
+    </div>
+
+    <!-- 1. 스릴온더머그 -->
+    <div class="timeline-item">
+      <div class="timeline-dot morning"></div>
+      <div class="timeline-time">09:00 – 10:30</div>
+      <div class="timeline-card">
+        <div class="timeline-card-header">
+          <div>
+            <span class="num-badge">1</span>
+            <span class="timeline-card-title">스릴온더머그</span>
+          </div>
+        </div>
+        <div class="timeline-card-subtitle">THRILL ON THE MUG</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 影岛区 东三洞 1049-23</div>
+        <div class="tags-row">
+          <span class="food-option">☕ 咖啡</span>
+          <span class="food-option">🌊 美景</span>
+        </div>
+        <a href="https://naver.me/GrgAlPWX" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">太宗台高空滑索（Zipline）＋無敵海景咖啡</div>
+      </div>
+    </div>
+
+  </div>
+
+    <!-- 🚕 THRILL ON THE MUG → 松島 -->
+    <div class="transit-connector transit-taxi" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚕</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>計程車</strong>　THRILL ON THE MUG → 松島海上纜車</div>
+        <div class="transit-duration">約 25 分鐘</div>
+      </div>
+    </div>
+
+    <!-- 2. 松島天空步道 -->
+    <div class="timeline-item">
+      <div class="timeline-dot morning"></div>
+      <div class="timeline-card">
+        <div class="timeline-card-header">
+          <div>
+            <span class="num-badge">2</span>
+            <span class="timeline-card-title">松島天空步道</span>
+          </div>
+        </div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 西区 岩南洞 129-4</div>
+        <div class="tags-row">
+          <span class="food-option">🌊 美景</span>
+        </div>
+        <a href="https://naver.me/FkapMlF0" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">韓國最長的海上步道</div>
+      </div>
+    </div>
+
+    <!-- 3. 松島海上纜車 -->
+    <div class="timeline-item">
+      <div class="timeline-dot morning"></div>
+      <div class="timeline-card">
+        <div class="timeline-card-header">
+          <div>
+            <span class="num-badge">3</span>
+            <span class="timeline-card-title">松島海上纜車</span>
+          </div>
+        </div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 西区 岩南洞 765</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">路線：松島灣站 ↔ 松島Sky Park站</div>
+        <div class="tags-row">
+          <span class="food-option">🌊 美景</span>
+        </div>
+        <a href="https://naver.me/FHOZbBgQ" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">全長 1.62 公里，距海面最高約 86 公尺，單程約 15–20 分鐘｜設有水晶車廂<br>來回：16,000 KRW（約 TWD 337）</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 中午 -->
+  <div class="period-header" style="padding-top:8px;">
+    <span class="period-icon">🍽</span>
+    <span class="period-title morning">Lunch · 中午</span>
+  </div>
+
+  <div class="timeline">
+
+    <!-- 🚕 松島 → 明星一隻雞 -->
+    <div class="transit-connector transit-taxi" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚕</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>計程車</strong>　松島海上纜車 → 明星一隻雞</div>
+        <div class="transit-duration">約 25 分鐘</div>
+      </div>
+    </div>
+
+    <!-- 4. 明星一隻雞 -->
+    <div class="timeline-item">
+      <div class="timeline-dot morning"></div>
+      <div class="timeline-card">
+        <div class="timeline-card-header">
+          <div>
+            <span class="num-badge">4</span>
+            <span class="timeline-card-title">明星一隻雞</span>
+          </div>
+        </div>
+        <div class="timeline-card-subtitle">Myeongseong 一只鸡</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 影岛区 大桥洞一街 163-2</div>
+        <div class="tags-row">
+          <span class="food-option">🍗 美食</span>
+        </div>
+        <a href="https://naver.me/FbVBWPkT" target="_blank" class="map-btn">📍 NAVER Map</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DAY 2 下午 placeholder -->
+  <div style="background:var(--card);border:1px dashed var(--card-border);border-radius:14px;padding:20px;text-align:center;color:var(--text-muted);font-size:16px;margin-top:16px;">
+    ✏️ 下午行程待補充
   </div>
 </div>
 
@@ -1066,9 +1231,9 @@
     <div class="day-date">5月11日（一）</div>
     <div class="day-divider"></div>
   </div>
-  <div style="background:var(--card);border:1px dashed var(--card-border);border-radius:14px;padding:20px;text-align:center;color:var(--text-muted);font-size:0.82rem;">
+  <div style="background:var(--card);border:1px dashed var(--card-border);border-radius:14px;padding:20px;text-align:center;color:var(--text-muted);font-size:16px;">
     ✏️ 行程待規劃<br>
-    <span style="font-size:0.7rem;opacity:0.6;">📌 記得 11:00 前退房</span>
+    <span style="font-size:16px;opacity:0.6;">📌 記得 11:00 前退房</span>
   </div>
   <div style="margin-top:12px;">
     <div class="flight-card return" style="margin-bottom:0;">
@@ -1076,7 +1241,7 @@
         <span class="flight-tag return">回程</span>
         <span class="flight-number">ZE983 ｜ 22:00 起飛</span>
       </div>
-      <div style="font-size:0.78rem;color:var(--text-muted);line-height:1.6;">
+      <div style="font-size:16px;color:var(--text-muted);line-height:1.6;">
         🛫 金海機場 22:00 → 桃園 T1 00:20 (+1)
       </div>
     </div>
@@ -1087,7 +1252,7 @@
 <div class="footer">
   <span class="footer-flag">🇰🇷</span>
   부산이 기다린다 · 釜山等著你<br>
-  <span style="opacity:0.4;font-size:0.65rem;">2026.05.09 – 05.11</span>
+  <span style="opacity:0.4;font-size:16px;">2026.05.09 – 05.11</span>
 </div>
 
 </body>
