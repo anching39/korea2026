@@ -618,8 +618,9 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 0 6px 0;
+    padding: 0 0 6px 0;
     margin-left: 9px;
+    margin-top: -10px;
     position: relative;
   }
 
@@ -766,7 +767,7 @@
   <div class="section-label">🏨 住宿資訊</div>
   <div class="hotel-card">
     <div class="hotel-name">Felix by STX Hotel</div>
-    <div class="hotel-address">釜山広域市 海雲台区 佑洞 539-10<br>부산광역시 해운대구 우동 539-10</div>
+    <div class="hotel-address">釜山廣域市 海雲台區 佑洞 539-10<br>부산광역시 해운대구 우동 539-10</div>
     <div class="hotel-meta">
       <div class="hotel-badge">⏰ 入住 15:00</div>
       <div class="hotel-badge">🕙 退房 11:00</div>
@@ -864,7 +865,7 @@
           </div>
         </div>
         <div class="timeline-card-subtitle">Momos Coffee Marine City</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 海云台区 佑洞 1410-1</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 海雲台區 佑洞 1410-1</div>
         <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">🕐 07:00 – 18:00</div>
         <div class="tags-row">
           <span class="food-option">☕ 咖啡</span>
@@ -898,7 +899,7 @@
           <span class="food-option">🌊 美景</span>
         </div>
         <div style="margin-top:8px;font-size:16px;color:var(--text-muted);line-height:1.6;">
-          📍 尾浦 <span style="color:var(--text-muted)">→</span> <span class="highlight-text">青沙浦</span>
+          📍 尾浦 <span style="color:var(--text-muted)">→</span> 青沙浦
         </div>
         <a href="https://naver.me/GVV8P9Yg" target="_blank" class="map-btn">📍 NAVER Map</a>
         <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">🚂 搭膠囊列車</div>
@@ -925,15 +926,16 @@
         <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📸 下車後直接吃＋拍照</div>
       </div>
     </div>
-  </div>
 
-  <!-- 🚕 青沙浦 → Blue Bottle -->
-  <div class="transit-connector transit-taxi" style="margin-left:0;padding:8px 0;padding-left:32px;">
-    <div class="transit-icon-wrap">🚕</div>
-    <div class="transit-body">
-      <div class="transit-label"><strong>計程車</strong>　青沙浦 → Blue Bottle（블루보틀 부산 민락 카페）</div>
-      <div class="transit-duration">15 分鐘</div>
+    <!-- 🚕 青沙浦 → Blue Bottle -->
+    <div class="transit-connector transit-taxi" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚕</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>計程車</strong>　青沙浦 → Blue Bottle（블루보틀 부산 민락 카페）</div>
+        <div class="transit-duration">15 分鐘</div>
+      </div>
     </div>
+
   </div>
 
   <!-- 下午 -->
@@ -955,7 +957,7 @@
           </div>
         </div>
         <div class="timeline-card-subtitle">☕ Blue Bottle Coffee<br>🌉 看廣安大橋 ＋ 放鬆</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山广域市 水营区 民乐洞 336-10</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 水營區 民樂洞 336-10</div>
         <div class="tags-row">
           <span class="food-option">☕ 咖啡</span>
         </div>
@@ -984,22 +986,23 @@
           </div>
         </div>
         <div class="timeline-card-subtitle">🛍 購物 ｜ 全球最大百貨公司之一</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山广域市 海云台区 佑洞 1495</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 1495</div>
         <div class="tags-row">
           <span class="food-option" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.2);color:#c084fc;">🛍 購物</span>
         </div>
         <a href="https://naver.me/5fdSoK6q" target="_blank" class="map-btn">📍 NAVER Map</a>
       </div>
     </div>
-  </div>
 
-  <!-- 🚊 新世界 → 廣安里 -->
-  <div class="transit-connector transit-metro" style="margin-left:0;padding:8px 0;padding-left:32px;">
-    <div class="transit-icon-wrap">🚊</div>
-    <div class="transit-body">
-      <div class="transit-label"><strong>地鐵 2 號線</strong>　Centum City → 廣安里（出口5）</div>
-      <div class="transit-duration">約 10 分鐘</div>
+    <!-- 🚊 新世界 → 廣安里 -->
+    <div class="transit-connector transit-metro" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚊</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>地鐵 2 號線</strong>　Centum City → 廣安里（出口5）</div>
+        <div class="transit-duration">約 10 分鐘</div>
+      </div>
     </div>
+
   </div>
 
   <!-- 晚上 -->
@@ -1024,7 +1027,7 @@
         <div class="timeline-card-subtitle">
           🌃 夜景：廣安大橋　✨ 釜山最美夜景之一
         </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山广域市 水营区 民乐洞 192-7</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 水營區 民樂洞 192-7</div>
         <div class="tags-row">
           <span class="food-option">🌊 美景</span>
         </div>
@@ -1034,31 +1037,29 @@
       </div>
     </div>
 
-  </div>
-
-  <!-- 🚊 廣安里 → 飯店 -->
-  <div class="transit-connector transit-metro" style="margin-left:0;padding:8px 0;padding-left:32px;">
-    <div class="transit-icon-wrap">🚊</div>
-    <div class="transit-body">
-      <div class="transit-label"><strong>地鐵 2 號線</strong>　廣安里 → 海雲台</div>
-      <div class="transit-duration">約 15 分鐘</div>
+    <!-- 🚊 廣安里 → 飯店 -->
+    <div class="transit-connector transit-metro" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚊</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>地鐵 2 號線</strong>　廣安里 → 海雲台</div>
+        <div class="transit-duration">約 15 分鐘</div>
+      </div>
     </div>
-  </div>
 
-  <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
       <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f9ca24,#f0932b);border-radius:14px 14px 0 0;"></div>
-        <div style="font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:#f9ca24;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:6px;">🏨 回飯店</div>
         <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山広域市 海雲台区 佑洞 539-10</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 539-10</div>
         <div class="tags-row" style="margin-top:8px;">
           <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
         </div>
         <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:8px;">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">回飯店</div>
       </div>
     </div>
+
   </div>
 
 </div>
@@ -1118,17 +1119,15 @@
           </div>
         </div>
         <div class="timeline-card-subtitle">THRILL ON THE MUG</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 影岛区 东三洞 1049-23</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 影島區 東三洞 1049-23</div>
         <div class="tags-row">
           <span class="food-option">☕ 咖啡</span>
           <span class="food-option">🌊 美景</span>
         </div>
         <a href="https://naver.me/GrgAlPWX" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">太宗台高空滑索（Zipline）＋無敵海景咖啡</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">太宗台高空滑索（Zipline）＋無敵海景咖啡<br><span style="color:#ff6b9d;">⚠️ 目前暫停營運，截至三月底未公佈重新開放時間，於四月底再確認一次</span></div>
       </div>
     </div>
-
-  </div>
 
     <!-- 🚕 THRILL ON THE MUG → 松島 -->
     <div class="transit-connector transit-taxi" style="margin-left:9px;">
@@ -1149,7 +1148,7 @@
             <span class="timeline-card-title">松島天空步道</span>
           </div>
         </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 西区 岩南洞 129-4</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 西區 岩南洞 129-4</div>
         <div class="tags-row">
           <span class="food-option">🌊 美景</span>
         </div>
@@ -1168,13 +1167,22 @@
             <span class="timeline-card-title">松島海上纜車</span>
           </div>
         </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 西区 岩南洞 765</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 西區 岩南洞 765</div>
         <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">路線：松島灣站 ↔ 松島Sky Park站</div>
         <div class="tags-row">
           <span class="food-option">🌊 美景</span>
         </div>
         <a href="https://naver.me/FHOZbBgQ" target="_blank" class="map-btn">📍 NAVER Map</a>
         <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">全長 1.62 公里，距海面最高約 86 公尺，單程約 15–20 分鐘｜設有水晶車廂<br>來回：16,000 KRW（約 TWD 337）</div>
+      </div>
+    </div>
+
+    <!-- 🚕 松島 → 明星一隻雞 -->
+    <div class="transit-connector transit-taxi" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚕</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>計程車</strong>　松島海上纜車 → 明星一隻雞</div>
+        <div class="transit-duration">約 25 分鐘</div>
       </div>
     </div>
 
@@ -1188,15 +1196,6 @@
 
   <div class="timeline">
 
-    <!-- 🚕 松島 → 明星一隻雞 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　松島海上纜車 → 明星一隻雞</div>
-        <div class="transit-duration">約 25 分鐘</div>
-      </div>
-    </div>
-
     <!-- 4. 明星一隻雞 -->
     <div class="timeline-item">
       <div class="timeline-dot morning"></div>
@@ -1208,7 +1207,7 @@
           </div>
         </div>
         <div class="timeline-card-subtitle">Myeongseong 一只鸡</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山广域市 影岛区 大桥洞一街 163-2</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 影島區 大橋洞一街 163-2</div>
         <div class="tags-row">
           <span class="food-option">🍗 美食</span>
         </div>
@@ -1216,12 +1215,203 @@
       </div>
     </div>
 
+    <!-- 🚕 明星一隻雞 → 甘川文化村 -->
+    <div class="transit-connector transit-taxi" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚕</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>計程車</strong>　明星一隻雞 → 甘川文化村</div>
+        <div class="transit-duration">約 20 分鐘</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- DAY 2 下午 placeholder -->
-  <div style="background:var(--card);border:1px dashed var(--card-border);border-radius:14px;padding:20px;text-align:center;color:var(--text-muted);font-size:16px;margin-top:16px;">
-    ✏️ 下午行程待補充
+  <!-- 下午 -->
+  <div class="period-header" style="padding-top:8px;">
+    <span class="period-icon">☕</span>
+    <span class="period-title afternoon">Afternoon · 下午</span>
   </div>
+
+  <div class="timeline">
+
+    <!-- 5. 甘川文化村 -->
+    <div class="timeline-item">
+      <div class="timeline-dot afternoon"></div>
+      <div class="timeline-card">
+        <div class="timeline-card-header">
+          <div>
+            <span class="num-badge">5</span>
+            <span class="timeline-card-title">甘川文化村</span>
+          </div>
+        </div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 沙下區 甘川洞 1-14</div>
+        <div class="tags-row">
+          <span class="food-option">🌊 美景</span>
+          <span class="food-option">👑 小王子</span>
+        </div>
+        <a href="https://naver.me/x3cOpgxb" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">以依山勢建造的階梯式彩色建築聞名，又能俯瞰釜山港海景</div>
+      </div>
+    </div>
+
+    <!-- 選擇分隔 -->
+    <!-- 🚕 甘川文化村 → 待訂 -->
+    <div class="transit-connector transit-taxi" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚕</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>計程車</strong>　甘川文化村 → 待訂</div>
+        <div class="transit-duration">約 ?? 分鐘</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:6px 0 6px 0;font-size:16px;color:var(--text-muted);letter-spacing:0.1em;">（2選1）</div>
+
+    <!-- 6A. 札嘎其市場 -->
+    <div class="timeline-item">
+      <div class="timeline-dot afternoon"></div>
+      <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f9ca24,#f0932b);border-radius:14px 14px 0 0;"></div>
+        <div class="timeline-card-header">
+          <div>
+            <span class="num-badge" style="background:linear-gradient(135deg,#f9ca24,#f0932b);">6A</span>
+            <span class="timeline-card-title">札嘎其市場海鮮</span>
+          </div>
+        </div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 中區 南浦洞五街 92</div>
+        <div class="tags-row">
+          <span class="food-option">🦞 海鮮</span>
+        </div>
+        <a href="https://naver.me/GxrsX9uT" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">新東亞市場 85 號攤</div>
+      </div>
+    </div>
+
+    <div style="padding-bottom:8px;margin-top:-14px;font-size:16px;color:var(--text-muted);">或</div>
+
+    <!-- 6B. 文化共感水晶 -->
+    <div class="timeline-item">
+      <div class="timeline-dot afternoon"></div>
+      <div class="timeline-card" style="border-color:rgba(168,85,247,0.25);">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a855f7,#56ccf2);border-radius:14px 14px 0 0;"></div>
+        <div class="timeline-card-header">
+          <div>
+            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#56ccf2);">6B</span>
+            <span class="timeline-card-title">문화공감 수정</span>
+          </div>
+        </div>
+        <div class="timeline-card-subtitle">文化共感水晶（貞蘭閣）</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 東區 水晶洞 1010</div>
+        <div class="tags-row">
+          <span class="food-option">☕ 咖啡</span>
+        </div>
+        <a href="https://naver.me/5bCaPIIE" target="_blank" class="map-btn">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">日式老宅｜IU《夜信（밤편지）》MV 拍攝地</div>
+      </div>
+    </div>
+
+    <!-- 🚕 待訂 → 西面 -->
+    <div class="transit-connector transit-taxi" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚕</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>計程車</strong>　待訂 → 西面</div>
+        <div class="transit-duration">約 ?? 分鐘</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 晚上 -->
+  <div class="period-header" style="padding-top:8px;">
+    <span class="period-icon">🌉</span>
+    <span class="period-title evening">Evening · 晚上</span>
+  </div>
+
+  <div class="timeline">
+
+    <!-- 7. 西面 -->
+    <div class="timeline-item">
+      <div class="timeline-dot evening"></div>
+      <div class="timeline-card" style="border-color:rgba(168,85,247,0.2);">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a855f7,#ff6b9d);border-radius:14px 14px 0 0;"></div>
+        <div class="timeline-card-header">
+          <div>
+            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#ff6b9d);">7</span>
+            <span class="timeline-card-title">西面</span>
+          </div>
+        </div>
+        <div class="timeline-card-subtitle">西面購物 / 美食</div>
+        <div class="tags-row">
+          <span class="food-option">🛍 購物</span>
+          <span class="food-option">🍽 美食</span>
+        </div>
+        <a href="https://naver.me/xDjsm8Re" target="_blank" class="map-btn">📍 NAVER Map</a>
+
+        <!-- 子項目 -->
+        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;gap:10px;">
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div>
+              <div style="font-size:16px;font-weight:500;color:var(--text);">올드맨션</div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+                <span style="font-size:16px;color:var(--text-muted);">田浦洞 687-18</span>
+                <span class="food-option">🥩 燒肉</span>
+              </div>
+            </div>
+            <a href="https://naver.me/FFqwbwIw" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div>
+              <div style="font-size:16px;font-weight:500;color:var(--text);">STRUT COFFEE <span style="color:#f9ca24;font-size:14px;">（世界百大）</span></div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+                <span style="font-size:16px;color:var(--text-muted);">田浦洞 340-31</span>
+                <span class="food-option">☕ 咖啡</span>
+              </div>
+            </div>
+            <a href="https://naver.me/5NeFkFvC" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div>
+              <div style="font-size:16px;font-weight:500;color:var(--text);">Hippi</div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+                <span style="font-size:16px;color:var(--text-muted);">田浦洞 354-17</span>
+                <span class="food-option">🍮 甜點</span>
+              </div>
+            </div>
+            <a href="https://naver.me/5NeFkFEI" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 🚊 西面 → 海雲台 -->
+    <div class="transit-connector transit-metro" style="margin-left:9px;">
+      <div class="transit-icon-wrap">🚊</div>
+      <div class="transit-body">
+        <div class="transit-label"><strong>地鐵 2 號線</strong>　西面 → 海雲台</div>
+        <div class="transit-duration">約 30 分鐘</div>
+      </div>
+    </div>
+
+    <!-- 回飯店 -->
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
+      <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f9ca24,#f0932b);border-radius:14px 14px 0 0;"></div>
+        <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 539-10</div>
+        <div class="tags-row" style="margin-top:8px;">
+          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
+        </div>
+        <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:8px;">📍 NAVER Map</a>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">回飯店</div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <div class="section-divider"></div>
