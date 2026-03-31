@@ -799,7 +799,6 @@
     <div class="timeline-item">
       <div class="timeline-dot" style="background:linear-gradient(135deg,#c084fc,#56ccf2);box-shadow:0 0 10px rgba(192,132,252,0.5);"></div>
       <div class="timeline-card" style="border-color:rgba(192,132,252,0.2);">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#c084fc,#56ccf2);border-radius:14px 14px 0 0;"></div>
         <div style="font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:#c084fc;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:10px;">✈️ 機場 → 飯店</div>
 
         <!-- 第一段：輕軌 -->
@@ -1059,7 +1058,6 @@
         <span style="color:var(--text-muted);">⏱ 預計停留 1H</span>
       </div>
       <div class="timeline-card" style="border-color:rgba(168,85,247,0.25);">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a855f7,#ff6b9d);border-radius:14px 14px 0 0;"></div>
         <div class="timeline-card-header">
           <div>
             <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#ff6b9d);">5</span>
@@ -1091,7 +1089,6 @@
     <div class="timeline-item">
       <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
       <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f9ca24,#f0932b);border-radius:14px 14px 0 0;"></div>
         <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
         <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 539-10</div>
         <div class="tags-row" style="margin-top:8px;">
@@ -1126,6 +1123,7 @@
     <!-- 🏨 飯店出發 -->
     <div class="timeline-item">
       <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
+      <div class="timeline-time">08:00</div>
       <div class="timeline-card" style="border-color:rgba(249,202,36,0.15);">
         <div style="display:flex;align-items:center;gap:8px;">
           <span style="font-size:1rem;">🏨</span>
@@ -1152,7 +1150,10 @@
     <!-- 1. 스릴온더머그 -->
     <div class="timeline-item">
       <div class="timeline-dot morning"></div>
-      <div class="timeline-time">09:00 – 10:30</div>
+      <div class="timeline-time" style="display:flex;justify-content:space-between;">
+        <span>09:00 – 10:30</span>
+        <span style="color:var(--text-muted);">⏱ 預計停留 1H30M</span>
+      </div>
       <div class="timeline-card">
         <div class="timeline-card-header">
           <div>
@@ -1171,14 +1172,7 @@
       </div>
     </div>
 
-    <!-- 🚕 THRILL ON THE MUG → 松島 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　THRILL ON THE MUG → 松島海上纜車</div>
-        <div class="transit-duration">約 25 分鐘</div>
-      </div>
-    </div>
+    <div style="padding:4px 0;margin-top:-20px;font-size:16px;color:var(--text-muted);">或</div>
 
     <!-- 2. 松島天空步道 -->
     <div class="timeline-item">
@@ -1186,7 +1180,7 @@
       <div class="timeline-card">
         <div class="timeline-card-header">
           <div>
-            <span class="num-badge">2</span>
+            <span class="num-badge">1</span>
             <span class="timeline-card-title">松島天空步道</span>
           </div>
         </div>
@@ -1196,6 +1190,28 @@
         </div>
         <a href="https://naver.me/FkapMlF0" target="_blank" class="map-btn">📍 NAVER Map</a>
         <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">韓國最長的海上步道</div>
+
+        <!-- 附近餐廳推薦 -->
+        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);">
+          <div style="font-size:16px;color:var(--text-muted);margin-bottom:8px;">🍽 附近餐廳推薦</div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
+            <div>
+              <div style="font-size:16px;font-weight:500;color:var(--text);">플루어</div>
+              <div class="tags-row" style="margin-top:4px;"><span class="food-option">🥐 早餐</span></div>
+            </div>
+            <a href="https://naver.me/GtUOpuuh" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div>
+              <div style="font-size:16px;font-weight:500;color:var(--text);">아덴블랑제리 부산송도점</div>
+              <div class="tags-row" style="margin-top:4px;"><span class="food-option">🥐 早餐</span></div>
+            </div>
+            <a href="https://naver.me/Fk7CvUpX" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -1205,7 +1221,7 @@
       <div class="timeline-card">
         <div class="timeline-card-header">
           <div>
-            <span class="num-badge">3</span>
+            <span class="num-badge">2</span>
             <span class="timeline-card-title">松島海上纜車</span>
           </div>
         </div>
@@ -1312,10 +1328,9 @@
     <div class="timeline-item">
       <div class="timeline-dot afternoon"></div>
       <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f9ca24,#f0932b);border-radius:14px 14px 0 0;"></div>
         <div class="timeline-card-header">
           <div>
-            <span class="num-badge" style="background:linear-gradient(135deg,#f9ca24,#f0932b);">6A</span>
+            <span class="num-badge" style="background:linear-gradient(135deg,#f9ca24,#f0932b);">5A</span>
             <span class="timeline-card-title">札嘎其市場海鮮</span>
           </div>
         </div>
@@ -1334,10 +1349,9 @@
     <div class="timeline-item">
       <div class="timeline-dot afternoon"></div>
       <div class="timeline-card" style="border-color:rgba(168,85,247,0.25);">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a855f7,#56ccf2);border-radius:14px 14px 0 0;"></div>
         <div class="timeline-card-header">
           <div>
-            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#56ccf2);">6B</span>
+            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#56ccf2);">5B</span>
             <span class="timeline-card-title">문화공감 수정</span>
           </div>
         </div>
@@ -1374,10 +1388,9 @@
     <div class="timeline-item">
       <div class="timeline-dot evening"></div>
       <div class="timeline-card" style="border-color:rgba(168,85,247,0.2);">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#a855f7,#ff6b9d);border-radius:14px 14px 0 0;"></div>
         <div class="timeline-card-header">
           <div>
-            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#ff6b9d);">7</span>
+            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#ff6b9d);">6</span>
             <span class="timeline-card-title">西面</span>
           </div>
         </div>
@@ -1441,7 +1454,6 @@
     <div class="timeline-item">
       <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
       <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f9ca24,#f0932b);border-radius:14px 14px 0 0;"></div>
         <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
         <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 539-10</div>
         <div class="tags-row" style="margin-top:8px;">
