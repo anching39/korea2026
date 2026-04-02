@@ -350,10 +350,12 @@
     background: rgba(249, 202, 36, 0.1);
     border: 1px solid rgba(249, 202, 36, 0.2);
     border-radius: 8px;
-    padding: 4px 10px;
-    font-size: 0.7rem;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1;
     color: #f9ca24;
     font-family: 'Space Grotesk', sans-serif;
+    vertical-align: middle;
   }
 
   .booking-id {
@@ -515,9 +517,11 @@
     background: rgba(240,147,43,0.1);
     border: 1px solid rgba(240,147,43,0.2);
     border-radius: 8px;
-    padding: 3px 10px;
-    font-size: 0.72rem;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1;
     color: #f0932b;
+    vertical-align: middle;
   }
 
   /* Map button */
@@ -528,8 +532,9 @@
     background: rgba(3,199,90,0.12);
     border: 1px solid rgba(3,199,90,0.25);
     border-radius: 8px;
-    padding: 5px 12px;
-    font-size: 0.7rem;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1;
     color: #03c75a;
     text-decoration: none;
     font-family: 'Space Grotesk', sans-serif;
@@ -537,6 +542,7 @@
     transition: background 0.2s, transform 0.1s;
     letter-spacing: 0.03em;
     margin-top: 8px;
+    vertical-align: middle;
   }
 
   .map-btn:active { transform: scale(0.97); background: rgba(3,199,90,0.2); }
@@ -1035,10 +1041,17 @@ window.addEventListener('load', () => {
         </div>
         <a href="https://naver.me/GVV8P9Yg" target="_blank" class="map-btn">📍 NAVER Map</a>
         <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">
-          去程：尾浦 → 青沙浦<br>
-          　　🚂 搭天空膠囊列車｜班次 6️⃣　11:30 – 12:00<br>
-          回程：青沙浦 → 尾浦<br>
-          　　🚃 搭海岸電車｜班次 1️⃣0️⃣　12:42<br>
+          <strong style="color:var(--text);">去程</strong>：尾浦 → 青沙浦<br>
+          　　🚂 搭天空膠囊列車<br>
+          　　班次 6️⃣　11:30 – 12:00
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,0.06);margin:8px 0;"></div>
+        <div style="font-size:16px;color:var(--text-muted);">
+          <strong style="color:var(--text);">回程</strong>：青沙浦 → 尾浦<br>
+          　　🚃 搭海岸電車｜班次 1️⃣0️⃣　12:42
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,0.06);margin:8px 0;"></div>
+        <div style="font-size:16px;color:var(--text-muted);">
           🎫 3人套票 ₩78,000（1,661元）
         </div>
       </div>
@@ -1090,36 +1103,27 @@ window.addEventListener('load', () => {
           <div style="font-size:16px;color:var(--text-muted);margin-bottom:8px;">🍽 附近餐廳推薦</div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
-            <div>
+            <div style="width:100%;">
               <div style="font-size:16px;font-weight:500;color:var(--text);">마니주</div>
-              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
-                <span style="font-size:16px;color:var(--text-muted);">수영구 광안해변로 366 2F</span>
-                <span class="food-option">🔥 烤鰻魚</span>
-              </div>
+              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">수영구 광안해변로 366 2F</div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🔥 烤鰻魚</span><a style="margin-top:0;" href="https://naver.me/F1rqxfZk" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
             </div>
-            <a href="https://naver.me/F1rqxfZk" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
           </div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
-            <div>
+            <div style="width:100%;">
               <div style="font-size:16px;font-weight:500;color:var(--text);">이하정 간장게장</div>
-              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
-                <span style="font-size:16px;color:var(--text-muted);">수영구 광서로10번길 46 1F</span>
-                <span class="food-option">🦀 醬蟹</span>
-              </div>
+              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">수영구 광서로10번길 46 1F</div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🦀 醬蟹</span><a style="margin-top:0;" href="https://naver.me/5JpUOsnD" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
             </div>
-            <a href="https://naver.me/5JpUOsnD" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
           </div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;">
-            <div>
+            <div style="width:100%;">
               <div style="font-size:16px;font-weight:500;color:var(--text);">예옌</div>
-              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
-                <span style="font-size:16px;color:var(--text-muted);">수영구 수영로 641 2F</span>
-                <span class="food-option">🍜 炸醬麵</span>
-              </div>
+              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">수영구 수영로 641 2F</div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🍜 炸醬麵</span><a style="margin-top:0;" href="https://naver.me/GiptLQgD" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
             </div>
-            <a href="https://naver.me/GiptLQgD" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
           </div>
 
         </div>
@@ -1164,8 +1168,7 @@ window.addEventListener('load', () => {
       <div class="transit-icon-wrap">🚊</div>
       <div class="transit-body">
         <div class="transit-label"><strong>地鐵 2 號線</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">Centum City → 廣安里（出口5）</div>
-        <div style="padding-left:12px;margin-top:3px;"><span class="transit-duration">10 分鐘</span></div>
+        <div class="transit-label" style="justify-content:space-between;">Centum City → 廣安里（出口5）<span class="transit-duration">10 分鐘</span></div>
       </div>
     </div>
 
@@ -1211,8 +1214,7 @@ window.addEventListener('load', () => {
       <div class="transit-icon-wrap">🚊</div>
       <div class="transit-body">
         <div class="transit-label"><strong>地鐵 2 號線</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">廣安里 → 海雲台</div>
-        <div style="padding-left:12px;margin-top:3px;"><span class="transit-duration">15 分鐘</span></div>
+        <div class="transit-label" style="justify-content:space-between;">廣安里 → 海雲台<span class="transit-duration">15 分鐘</span></div>
       </div>
     </div>
 
@@ -1221,11 +1223,11 @@ window.addEventListener('load', () => {
       <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
         <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
         <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 539-10</div>
-        <div class="tags-row" style="margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
           <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
+          <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
         </div>
-        <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:8px;">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">回飯店</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">🛁 腳已發軟，收工</div>
       </div>
     </div>
 
@@ -1327,19 +1329,17 @@ window.addEventListener('load', () => {
           <div style="font-size:16px;color:var(--text-muted);margin-bottom:8px;">🍽 附近餐廳推薦</div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
-            <div>
+            <div style="width:100%;">
               <div style="font-size:16px;font-weight:500;color:var(--text);">플루어</div>
-              <div class="tags-row" style="margin-top:4px;"><span class="food-option">🥐 早餐</span></div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🥐 早餐</span><a style="margin-top:0;" href="https://naver.me/GtUOpuuh" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
             </div>
-            <a href="https://naver.me/GtUOpuuh" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
           </div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div>
+            <div style="width:100%;">
               <div style="font-size:16px;font-weight:500;color:var(--text);">아덴블랑제리 부산송도점</div>
-              <div class="tags-row" style="margin-top:4px;"><span class="food-option">🥐 早餐</span></div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🥐 早餐</span><a style="margin-top:0;" href="https://naver.me/Fk7CvUpX" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
             </div>
-            <a href="https://naver.me/Fk7CvUpX" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
           </div>
 
         </div>
@@ -1548,36 +1548,27 @@ window.addEventListener('load', () => {
         <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;gap:10px;">
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div>
+            <div style="width:100%;">
               <div style="font-size:16px;font-weight:500;color:var(--text);">올드맨션</div>
-              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
-                <span style="font-size:16px;color:var(--text-muted);">田浦洞 687-18</span>
-                <span class="food-option">🥩 燒肉</span>
-              </div>
+              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">田浦洞 687-18</div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🥩 燒肉</span><a style="margin-top:0;" href="https://naver.me/FFqwbwIw" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
             </div>
-            <a href="https://naver.me/FFqwbwIw" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
           </div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div>
+            <div style="width:100%;">
               <div style="font-size:16px;font-weight:500;color:var(--text);">STRUT COFFEE <span style="color:#f9ca24;font-size:14px;">（世界百大）</span></div>
-              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
-                <span style="font-size:16px;color:var(--text-muted);">田浦洞 340-31</span>
-                <span class="food-option">☕ 咖啡</span>
-              </div>
+              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">田浦洞 340-31</div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">☕ 咖啡</span><a style="margin-top:0;" href="https://naver.me/5NeFkFvC" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
             </div>
-            <a href="https://naver.me/5NeFkFvC" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
           </div>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div>
+            <div style="width:100%;">
               <div style="font-size:16px;font-weight:500;color:var(--text);">Hippi</div>
-              <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
-                <span style="font-size:16px;color:var(--text-muted);">田浦洞 354-17</span>
-                <span class="food-option">🍮 甜點</span>
-              </div>
+              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">田浦洞 354-17</div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🍮 甜點</span><a style="margin-top:0;" href="https://naver.me/5NeFkFEI" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
             </div>
-            <a href="https://naver.me/5NeFkFEI" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a>
           </div>
 
         </div>
@@ -1589,8 +1580,7 @@ window.addEventListener('load', () => {
       <div class="transit-icon-wrap">🚊</div>
       <div class="transit-body">
         <div class="transit-label"><strong>地鐵 2 號線</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">西面 → 海雲台</div>
-        <div style="padding-left:12px;margin-top:3px;"><span class="transit-duration">30 分鐘</span></div>
+        <div class="transit-label" style="justify-content:space-between;">西面 → 海雲台<span class="transit-duration">30 分鐘</span></div>
       </div>
     </div>
 
@@ -1600,11 +1590,11 @@ window.addEventListener('load', () => {
       <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
         <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
         <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 539-10</div>
-        <div class="tags-row" style="margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
           <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
+          <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
         </div>
-        <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:8px;">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">回飯店</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">🛒 錢花光了，人也相當累</div>
       </div>
     </div>
 
