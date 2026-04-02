@@ -705,6 +705,11 @@
     <div class="header-title">2026釜山</div>
     <div class="header-dates">2026.05.09 — 2026.05.11</div>
   </div>
+  <div style="display:flex;gap:8px;">
+    <a href="#day1" style="text-decoration:none;background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);border-radius:8px;padding:6px 12px;font-size:13px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#f97316;line-height:1;">DAY 1</a>
+    <a href="#day2" style="text-decoration:none;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:6px 12px;font-size:13px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#38bdf8;line-height:1;">DAY 2</a>
+    <a href="#day3" style="text-decoration:none;background:rgba(129,140,248,0.12);border:1px solid rgba(129,140,248,0.25);border-radius:8px;padding:6px 12px;font-size:13px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#818cf8;line-height:1;">DAY 3</a>
+  </div>
 </div>
 
 <!-- Hero -->
@@ -910,9 +915,7 @@ window.addEventListener('load', () => {
 <div class="section-divider"></div>
 
 <!-- ===== DAY 1 ===== -->
-<div class="day-section">
-  <div class="day-label-wrap">
-    <div class="day-label">DAY 1</div>
+<div class="day-section" id="day1">
     <div class="day-date">5月9日（六）</div>
     <div class="day-divider"></div>
   </div>
@@ -1238,7 +1241,7 @@ window.addEventListener('load', () => {
 
 <!-- ===== DAY 2 ===== -->
 <div class="section-divider"></div>
-<div class="day-section">
+<div class="day-section" id="day2">
   <div class="day-label-wrap">
     <div class="day-label">DAY 2</div>
     <div class="day-date">5月10日（日）</div>
@@ -1604,18 +1607,14 @@ window.addEventListener('load', () => {
 </div>
 
 <div class="section-divider"></div>
-<div class="day-section" style="padding-bottom:24px;">
+<div class="day-section" id="day3" style="padding-bottom:24px;">
   <div class="day-label-wrap">
     <div class="day-label">DAY 3</div>
     <div class="day-date">5月11日（一）</div>
     <div class="day-divider"></div>
   </div>
-  <div style="background:var(--card);border:1px dashed var(--card-border);border-radius:14px;padding:20px;text-align:center;color:var(--text-muted);font-size:16px;">
-    📌 11:00 前退房，行李寄放後出發
-  </div>
-
   <!-- 早上 -->
-  <div class="period-header" style="padding-top:16px;">
+  <div class="period-header" style="padding-top:8px;">
     <span class="period-icon">☀️</span>
     <span class="period-title morning">Morning · 早上</span>
   </div>
@@ -1633,7 +1632,7 @@ window.addEventListener('load', () => {
         <div class="tags-row" style="margin-top:8px;">
           <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
         </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">退房寄放行李後出發</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📌 11:00 前退房，行李寄放後出發</div>
       </div>
     </div>
 
@@ -1836,7 +1835,7 @@ window.addEventListener('load', () => {
           </div>
         </div>
 
-        <div style="font-size:16px;color:var(--text-muted);margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📌 最遲 20:00 前抵達機場</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📌 最遲 20:00 前抵達機場｜車程約 1H</div>
       </div>
     </div>
 
