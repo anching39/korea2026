@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
 <title>🇰🇷 釜山三天二夜</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -644,20 +645,28 @@
     border-radius: 10px;
     padding: 8px 12px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .transit-label {
     font-size: 0.72rem;
     color: var(--text-muted);
     line-height: 1.4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .transit-label strong {
     color: var(--text);
     font-weight: 500;
+  }
+
+  .transit-route {
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.4;
   }
 
   .transit-duration {
@@ -772,7 +781,7 @@
       <div class="hotel-badge">⏰ 入住 15:00</div>
       <div class="hotel-badge">🕙 退房 11:00</div>
     </div>
-    <div class="booking-id">訂房編號：1128146815310084 ｜ HU MIN TZU</div>
+    <div class="booking-id"><span style="-webkit-user-select:none;user-select:none;" x-apple-data-detectors="false">訂房編號：1128146815310084</span> ｜ HU MIN TZU</div>
     <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn">📍 NAVER Map 開啟飯店位置</a>
   </div>
 </div>
@@ -962,8 +971,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-taxi" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　飯店 → 모모스커피</div>
-        <div class="transit-duration">5–10 分鐘</div>
+        <div class="transit-label"><strong>計程車</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">飯店 → 모모스커피<span class="transit-duration">10 分 ｜ ₩6,500（138元）</span></div>
       </div>
     </div>
 
@@ -996,8 +1005,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-taxi">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　모모스커피 → 藍線公園尾浦站</div>
-        <div class="transit-duration">10 分鐘</div>
+        <div class="transit-label"><strong>計程車</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">모모스커피 → 藍線公園尾浦站<span class="transit-duration">18 分 ｜ ₩8,700（185元）</span></div>
       </div>
     </div>
 
@@ -1028,7 +1037,7 @@ window.addEventListener('load', () => {
           　　🚂 搭天空膠囊列車｜班次 6️⃣　11:30 – 12:00<br>
           回程：青沙浦 → 尾浦<br>
           　　🚃 搭海岸電車｜班次 1️⃣0️⃣　12:42<br>
-          🎫 3人套票 78,000 KRW（約 TWD 1,661）
+          🎫 3人套票 ₩78,000（1,661元）
         </div>
       </div>
     </div>
@@ -1037,8 +1046,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-taxi" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　尾浦 → Blue Bottle（블루보틀 부산 민락 카페）</div>
-        <div class="transit-duration">15 分鐘</div>
+        <div class="transit-label"><strong>計程車</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">尾浦 → Blue Bottle<span class="transit-duration">30 分 ｜ ₩12,100（258元）</span></div>
       </div>
     </div>
 
@@ -1118,8 +1127,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-taxi">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　Blue Bottle → 新世界百貨</div>
-        <div class="transit-duration">10 分鐘</div>
+        <div class="transit-label"><strong>計程車</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">Blue Bottle → 新世界百貨<span class="transit-duration">5 分 ｜ ₩4,800（102元）</span></div>
       </div>
     </div>
 
@@ -1150,8 +1159,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-metro" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚊</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>地鐵 2 號線</strong>　Centum City → 廣安里（出口5）</div>
-        <div class="transit-duration">約 10 分鐘</div>
+        <div class="transit-label"><strong>地鐵 2 號線</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">Centum City → 廣安里（出口5）<span class="transit-duration">10 分鐘</span></div>
       </div>
     </div>
 
@@ -1196,8 +1205,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-metro" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚊</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>地鐵 2 號線</strong>　廣安里 → 海雲台</div>
-        <div class="transit-duration">約 15 分鐘</div>
+        <div class="transit-label"><strong>地鐵 2 號線</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">廣安里 → 海雲台<span class="transit-duration">15 分鐘</span></div>
       </div>
     </div>
 
@@ -1257,8 +1266,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-taxi" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　飯店 → 스릴온더머그</div>
-        <div class="transit-duration">約 60 分鐘</div>
+        <div class="transit-label"><strong>計程車</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">飯店 → 松島纜車<span class="transit-duration">40 分 ｜ ₩24,500（522元）</span></div>
       </div>
     </div>
 
@@ -1346,7 +1355,7 @@ window.addEventListener('load', () => {
           <span class="food-option">🌊 美景</span>
         </div>
         <a href="https://naver.me/FHOZbBgQ" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">全長 1.62 公里，距海面最高約 86 公尺，單程約 15–20 分鐘｜設有水晶車廂<br>來回：16,000 KRW（約 TWD 337）</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">全長 1.62 公里，距海面最高86 公尺，單程15–20 分鐘｜設有水晶車廂<br>來回：₩16,000（337元）</div>
       </div>
     </div>
 
@@ -1354,8 +1363,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-taxi" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　松島海上纜車 → 明星一隻雞</div>
-        <div class="transit-duration">約 25 分鐘</div>
+        <div class="transit-label"><strong>計程車</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">松島海上纜車 → 明星一隻雞<span class="transit-duration">10 分 ｜ ₩7,400（158元）</span></div>
       </div>
     </div>
 
@@ -1392,8 +1401,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-taxi" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　明星一隻雞 → 甘川文化村</div>
-        <div class="transit-duration">約 20 分鐘</div>
+        <div class="transit-label"><strong>計程車</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">明星一隻雞 → 甘川文化村<span class="transit-duration">15 分 ｜ ₩8,100（172元）</span></div>
       </div>
     </div>
 
@@ -1428,12 +1437,15 @@ window.addEventListener('load', () => {
     </div>
 
     <!-- 選擇分隔 -->
-    <!-- 🚕 甘川文化村 → 待訂 -->
+    <!-- 🚕 甘川文化村 → 5A/5B -->
     <div class="transit-connector transit-taxi" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　甘川文化村 → 待訂</div>
-        <div class="transit-duration">約 ?? 分鐘</div>
+        <div>
+          <div class="transit-label"><strong>計程車</strong></div>
+          <div class="transit-label" style="justify-content:space-between;margin-top:3px;">甘川文化村 → 5A 札嘎其市場<span class="transit-duration">10 分 ｜ ₩5,900（126元）</span></div>
+          <div class="transit-label" style="justify-content:space-between;margin-top:6px;color:var(--text-muted);">或　甘川文化村 → 5B 문화공감 수정<span class="transit-duration">25 分 ｜ ₩9,600（204元）</span></div>
+        </div>
       </div>
     </div>
 
@@ -1480,12 +1492,15 @@ window.addEventListener('load', () => {
       </div>
     </div>
 
-    <!-- 🚕 待訂 → 西面 -->
+    <!-- 🚕 →西面 兩條路線 -->
     <div class="transit-connector transit-taxi" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚕</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong>　待訂 → 西面</div>
-        <div class="transit-duration">約 ?? 分鐘</div>
+        <div>
+          <div class="transit-label"><strong>計程車</strong></div>
+          <div class="transit-label" style="justify-content:space-between;margin-top:3px;">5A 札嘎其市場 → 西面<span class="transit-duration">30 分 ｜ ₩12,300（262元）</span></div>
+          <div class="transit-label" style="justify-content:space-between;margin-top:6px;color:var(--text-muted);">或　5B 문화공감 수정 → 西面<span class="transit-duration">25 分 ｜ ₩10,500（224元）</span></div>
+        </div>
       </div>
     </div>
 
@@ -1560,8 +1575,8 @@ window.addEventListener('load', () => {
     <div class="transit-connector transit-metro" style="margin-left:9px;">
       <div class="transit-icon-wrap">🚊</div>
       <div class="transit-body">
-        <div class="transit-label"><strong>地鐵 2 號線</strong>　西面 → 海雲台</div>
-        <div class="transit-duration">約 30 分鐘</div>
+        <div class="transit-label"><strong>地鐵 2 號線</strong></div>
+        <div class="transit-label" style="justify-content:space-between;">西面 → 海雲台<span class="transit-duration">30 分鐘</span></div>
       </div>
     </div>
 
