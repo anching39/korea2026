@@ -9,21 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --bg2: #0f0f1a;
-    --bg3: #13131f;
-    --card: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
-    --glow: #ff6b9d;
-    --glow2: #56ccf2;
-    --glow3: #f9ca24;
-    --accent-kr: #c0392b;
-    --text: #e8e8f0;
-    --text-muted: #7878a0;
-    --timeline-line: rgba(255, 107, 157, 0.3);
-    --timeline-dot: #ff6b9d;
-    --gradient: linear-gradient(135deg, #ff6b9d 0%, #a855f7 50%, #56ccf2 100%);
-    --gradient-kr: linear-gradient(135deg, #ff6b9d 0%, #ff4757 50%, #2980b9 100%);
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1c2333;
+    --card: rgba(255,255,255,0.05);
+    --card-border: rgba(255,255,255,0.1);
+    --glow: #f97316;
+    --glow2: #38bdf8;
+    --glow3: #fbbf24;
+    --accent-kr: #ef4444;
+    --text: #f0f6fc;
+    --text-muted: #8b949e;
+    --timeline-line: rgba(249,115,22,0.4);
+    --timeline-dot: #f97316;
+    --gradient: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fbbf24 100%);
+    --gradient-kr: linear-gradient(135deg, #f97316 0%, #ef4444 50%, #38bdf8 100%);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -409,8 +409,8 @@
     top: 8px;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, rgba(255,107,157,0.8) 0%, rgba(86,204,242,0.4) 100%);
-    box-shadow: 0 0 8px rgba(255,107,157,0.4);
+    background: linear-gradient(180deg, rgba(249,115,22,0.8) 0%, rgba(56,189,248,0.4) 100%);
+    box-shadow: 0 0 8px rgba(249,115,22,0.3);
   }
 
   .timeline-item {
@@ -430,9 +430,9 @@
     border: 2px solid var(--bg);
   }
 
-  .timeline-dot.morning { background: linear-gradient(135deg, #f9ca24, #f0932b); box-shadow: 0 0 10px rgba(249,202,36,0.6); }
-  .timeline-dot.afternoon { background: linear-gradient(135deg, #56ccf2, #2980b9); box-shadow: 0 0 10px rgba(86,204,242,0.6); }
-  .timeline-dot.evening { background: linear-gradient(135deg, #a855f7, #ff6b9d); box-shadow: 0 0 10px rgba(168,85,247,0.6); }
+  .timeline-dot.morning { background: linear-gradient(135deg, #fbbf24, #f97316); box-shadow: 0 0 10px rgba(251,191,36,0.6); }
+  .timeline-dot.afternoon { background: linear-gradient(135deg, #38bdf8, #0284c7); box-shadow: 0 0 10px rgba(56,189,248,0.6); }
+  .timeline-dot.evening { background: linear-gradient(135deg, #818cf8, #6366f1); box-shadow: 0 0 10px rgba(129,140,248,0.6); }
 
   .timeline-time {
     font-family: 'Space Grotesk', sans-serif;
@@ -453,7 +453,7 @@
 
   .timeline-card:active {
     transform: scale(0.99);
-    border-color: rgba(255,107,157,0.3);
+    border-color: rgba(249,115,22,0.4);
   }
 
   .timeline-card-header {
@@ -776,6 +776,119 @@
     <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn">📍 NAVER Map 開啟飯店位置</a>
   </div>
 </div>
+
+<div class="section-divider"></div>
+
+<!-- ===== 準備清單 ===== -->
+<div class="flight-section" style="padding-top:10px;padding-bottom:10px;">
+  <div class="section-label">🧳 出發前準備清單</div>
+  <div class="timeline-card" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#22c55e,#10b981);"></div>
+    <div style="height:2px;"></div>
+
+    <!-- 入境申請按鈕 -->
+    <a href="https://www.e-arrivalcard.go.kr/portal/main/index.do?locale=CH" target="_blank" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:12px 14px;text-decoration:none;margin-bottom:14px;">
+      <div>
+        <div style="font-size:16px;font-weight:500;color:#f0f6fc;">🛬 韓國入境申請</div>
+        <div style="font-size:13px;color:#8b949e;margin-top:2px;">入境三天前完成</div>
+      </div>
+      <div style="font-size:16px;color:#38bdf8;font-family:'Space Grotesk',sans-serif;font-weight:600;white-space:nowrap;">點此申請 →</div>
+    </a>
+
+    <!-- 進度 -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <div style="font-size:13px;color:#8b949e;" id="cl-text">0 / 7</div>
+    </div>
+    <div style="height:3px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:14px;overflow:hidden;">
+      <div id="cl-bar" style="height:100%;background:linear-gradient(90deg,#f97316,#fbbf24);border-radius:2px;width:0%;transition:width 0.3s;"></div>
+    </div>
+
+    <!-- 證件 / 金錢 -->
+    <div style="font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#8b949e;font-family:'Space Grotesk',sans-serif;margin-bottom:8px;">📄 證件 / 金錢</div>
+
+    <div class="cl-item" data-id="c1" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
+      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
+      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">📄 護照</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">確認有效期 6 個月以上</div></div>
+    </div>
+
+    <div class="cl-item" data-id="c2" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
+      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
+      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">💵 美金</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">當地兌換韓幣</div></div>
+    </div>
+
+    <div class="cl-item" data-id="c3" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
+      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
+      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🚇 T-money 交通卡</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">搭地鐵 / 公車用</div></div>
+    </div>
+
+    <div style="height:1px;background:rgba(255,255,255,0.06);margin:8px 0;"></div>
+
+    <!-- 手機 / 網路 -->
+    <div style="font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#8b949e;font-family:'Space Grotesk',sans-serif;margin:8px 0;">📱 手機 / 網路</div>
+
+    <div class="cl-item" data-id="c4" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
+      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
+      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🌐 韓國網卡 / eSIM 啟用</div></div>
+    </div>
+
+    <div class="cl-item" data-id="c5" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
+      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
+      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🗺 下載 NAVER Map APP</div></div>
+    </div>
+
+    <div class="cl-item" data-id="c6" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
+      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
+      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🚕 下載 Kakao T</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">叫計程車用</div></div>
+    </div>
+
+    <div class="cl-item" data-id="c7" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
+      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
+      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🔌 插座轉接頭</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">韓國是雙圓腳插</div></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const CL_KEY = 'busan_checklist_v1';
+const CL_TOTAL = 7;
+function clGetState() { try { return JSON.parse(localStorage.getItem(CL_KEY)) || {}; } catch { return {}; } }
+function clToggle(el) {
+  const box = el.querySelector('.cl-box');
+  const label = el.querySelector('.cl-label');
+  const checked = !box.style.background.includes('f97316');
+  box.style.background = checked ? '#f97316' : 'transparent';
+  box.style.borderColor = checked ? '#f97316' : 'rgba(255,255,255,0.2)';
+  box.style.color = checked ? 'white' : 'transparent';
+  label.style.opacity = checked ? '0.35' : '1';
+  label.style.textDecoration = checked ? 'line-through' : 'none';
+  const state = clGetState();
+  state[el.dataset.id] = checked;
+  localStorage.setItem(CL_KEY, JSON.stringify(state));
+  clUpdateProgress();
+}
+function clUpdateProgress() {
+  const state = clGetState();
+  const done = Object.values(state).filter(Boolean).length;
+  document.getElementById('cl-text').textContent = `${done} / ${CL_TOTAL}`;
+  document.getElementById('cl-bar').style.width = `${(done/CL_TOTAL)*100}%`;
+}
+window.addEventListener('load', () => {
+  const state = clGetState();
+  document.querySelectorAll('.cl-item').forEach(el => {
+    if (state[el.dataset.id]) {
+      const box = el.querySelector('.cl-box');
+      const label = el.querySelector('.cl-label');
+      box.style.background = '#f97316';
+      box.style.borderColor = '#f97316';
+      box.style.color = 'white';
+      label.style.opacity = '0.35';
+      label.style.textDecoration = 'line-through';
+    }
+  });
+  clUpdateProgress();
+});
+</script>
 
 <div class="section-divider"></div>
 
