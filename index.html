@@ -856,7 +856,8 @@ function clGetState() { try { return JSON.parse(localStorage.getItem(CL_KEY)) ||
 function clToggle(el) {
   const box = el.querySelector('.cl-box');
   const label = el.querySelector('.cl-label');
-  const checked = !box.style.background.includes('f97316');
+  const checked = el.dataset.checked !== 'true';
+  el.dataset.checked = checked;
   box.style.background = checked ? '#f97316' : 'transparent';
   box.style.borderColor = checked ? '#f97316' : 'rgba(255,255,255,0.2)';
   box.style.color = checked ? 'white' : 'transparent';
@@ -877,6 +878,7 @@ window.addEventListener('load', () => {
   const state = clGetState();
   document.querySelectorAll('.cl-item').forEach(el => {
     if (state[el.dataset.id]) {
+      el.dataset.checked = 'true';
       const box = el.querySelector('.cl-box');
       const label = el.querySelector('.cl-label');
       box.style.background = '#f97316';
