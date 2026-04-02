@@ -71,21 +71,6 @@
   }
 
   /* Floating flag animation */
-  .floating-flag {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 2rem;
-    z-index: 1000;
-    animation: floatFlag 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 12px rgba(255, 107, 157, 0.6));
-    cursor: default;
-  }
-
-  @keyframes floatFlag {
-    0%, 100% { transform: translateY(0) rotate(-3deg); }
-    50% { transform: translateY(-10px) rotate(3deg); }
-  }
 
   /* Sticky Header */
   .sticky-header {
@@ -697,7 +682,6 @@
 <body>
 
 <!-- Floating Flag -->
-<div class="floating-flag">🇰🇷</div>
 
 <!-- Sticky Header -->
 <div class="sticky-header">
@@ -706,9 +690,9 @@
     <div class="header-dates">2026.05.09 — 2026.05.11</div>
   </div>
   <div style="display:flex;gap:8px;">
-    <a href="#day1" style="text-decoration:none;background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);border-radius:8px;padding:6px 12px;font-size:13px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#f97316;line-height:1;">DAY 1</a>
-    <a href="#day2" style="text-decoration:none;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:6px 12px;font-size:13px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#38bdf8;line-height:1;">DAY 2</a>
-    <a href="#day3" style="text-decoration:none;background:rgba(129,140,248,0.12);border:1px solid rgba(129,140,248,0.25);border-radius:8px;padding:6px 12px;font-size:13px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#818cf8;line-height:1;">DAY 3</a>
+    <a href="#day1" style="text-decoration:none;background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);border-radius:8px;padding:10px 18px;font-size:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#f97316;line-height:1;">DAY 1</a>
+    <a href="#day2" style="text-decoration:none;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:10px 18px;font-size:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#38bdf8;line-height:1;">DAY 2</a>
+    <a href="#day3" style="text-decoration:none;background:rgba(129,140,248,0.12);border:1px solid rgba(129,140,248,0.25);border-radius:8px;padding:10px 18px;font-size:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#818cf8;line-height:1;">DAY 3</a>
   </div>
 </div>
 
