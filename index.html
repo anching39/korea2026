@@ -1,1907 +1,250 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-<title>🇰🇷 釜山三天二夜</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<html lang="zh-Hant"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>天鑽 機車位抽籤</title>
 <style>
-  :root {
-    --bg: #0d1117;
-    --bg2: #161b22;
-    --bg3: #1c2333;
-    --card: rgba(255,255,255,0.05);
-    --card-border: rgba(255,255,255,0.1);
-    --glow: #f97316;
-    --glow2: #38bdf8;
-    --glow3: #fbbf24;
-    --accent-kr: #ef4444;
-    --text: #f0f6fc;
-    --text-muted: #8b949e;
-    --timeline-line: rgba(249,115,22,0.4);
-    --timeline-dot: #f97316;
-    --gradient: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fbbf24 100%);
-    --gradient-kr: linear-gradient(135deg, #f97316 0%, #ef4444 50%, #38bdf8 100%);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html {
-    font-size: 18px;
-  }
-
-  /* 小字統一 16px */
-  .timeline-card-subtitle,
-  .timeline-time,
-  .flight-date,
-  .hotel-address,
-  .booking-id,
-  .flight-number,
-  .flight-duration,
-  .transit-label,
-  .transit-duration,
-  .header-dates,
-  .day-date,
-  .badge,
-  .hero-subtitle,
-  .footer {
-    font-size: 16px !important;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Noto Sans TC', 'Space Grotesk', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  /* Background noise texture */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Floating flag animation */
-
-  /* Sticky Header */
-  .sticky-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    background: rgba(10, 10, 15, 0.75);
-    border-bottom: 1px solid var(--card-border);
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
-  }
-
-  .header-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    background: var(--gradient-kr);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.02em;
-  }
-
-  .header-dates {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  /* Hero Section */
-  .hero {
-    position: relative;
-    padding: 50px 20px 40px;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; left: 50%; transform: translateX(-50%);
-    width: 600px; height: 300px;
-    background: radial-gradient(ellipse, rgba(255,107,157,0.12) 0%, rgba(86,204,242,0.06) 60%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-flag {
-    font-size: 3.5rem;
-    display: block;
-    margin-bottom: 12px;
-    animation: floatFlag 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px rgba(255,107,157,0.5));
-  }
-
-  @keyframes floatFlag {
-    0%, 100% { transform: translateY(0) rotate(-3deg); }
-    50% { transform: translateY(-10px) rotate(3deg); }
-  }
-
-  .hero-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 8vw, 3.2rem);
-    font-weight: 700;
-    background: var(--gradient-kr);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.1;
-    margin-bottom: 6px;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-subtitle {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .hero-badges {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-  }
-
-  .badge {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    backdrop-filter: blur(10px);
-  }
-
-  .badge span { color: var(--text); font-weight: 500; }
-
-  /* Flight Info Cards */
-  .flight-section {
-    padding: 10px 16px 0;
-  }
-
-  .section-label {
-    font-size: 18px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    font-family: 'Space Grotesk', sans-serif;
-    margin-bottom: 10px;
-    padding-left: 4px;
-  }
-
-  .flight-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 12px;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-  }
-
-  .flight-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gradient-kr);
-  }
-
-  .flight-card.return::before {
-    background: linear-gradient(90deg, #56ccf2 0%, #a855f7 100%);
-  }
-
-  .flight-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-
-  .flight-tag {
-    font-size: 0.65rem;
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-weight: 600;
-  }
-
-  .flight-tag.outbound { background: rgba(255,107,157,0.15); color: #ff6b9d; border: 1px solid rgba(255,107,157,0.3); }
-  .flight-tag.return { background: rgba(86,204,242,0.12); color: #56ccf2; border: 1px solid rgba(86,204,242,0.25); }
-
-  .flight-number {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-
-  .flight-route {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .flight-city {
-    flex: 1;
-  }
-
-  .city-time {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1;
-  }
-
-  .city-name {
-    font-size: 16px;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
-
-  .flight-city.right { text-align: right; }
-
-  .flight-middle {
-    flex: 1;
-    text-align: center;
-  }
-
-  .plane-icon { font-size: 1.2rem; display: block; }
-
-  .flight-line {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--card-border), transparent);
-    margin: 4px 0;
-    position: relative;
-  }
-
-  .flight-duration {
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .flight-date {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--card-border);
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  /* Hotel Card */
-  .hotel-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 12px;
-    backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hotel-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #f9ca24, #f0932b);
-  }
-
-  .hotel-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .hotel-address {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-
-  .hotel-meta {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .hotel-badge {
-    background: rgba(249, 202, 36, 0.1);
-    border: 1px solid rgba(249, 202, 36, 0.2);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 16px;
-    line-height: 1;
-    color: #f9ca24;
-    font-family: 'Space Grotesk', sans-serif;
-    vertical-align: middle;
-  }
-
-  .booking-id {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-top: 8px;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  /* Day Section */
-  .day-section {
-    padding: 20px 16px 0;
-    scroll-margin-top: 56px;
-  }
-
-  .day-label-wrap {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .day-label {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    background: var(--gradient-kr);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .day-date {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .day-divider {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(255,107,157,0.3), transparent);
-  }
-
-  /* Timeline */
-  .timeline {
-    position: relative;
-    padding-left: 32px;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 9px;
-    top: 8px;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, rgba(249,115,22,0.8) 0%, rgba(56,189,248,0.4) 100%);
-    box-shadow: 0 0 8px rgba(249,115,22,0.3);
-  }
-
-  .timeline-item {
-    position: relative;
-    margin-bottom: 20px;
-  }
-
-  .timeline-dot {
-    position: absolute;
-    left: -27px;
-    top: 8px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--gradient-kr);
-    box-shadow: 0 0 10px rgba(255,107,157,0.6), 0 0 20px rgba(255,107,157,0.3);
-    border: 2px solid var(--bg);
-  }
-
-  .timeline-dot.morning { background: linear-gradient(135deg, #fbbf24, #f97316); box-shadow: 0 0 10px rgba(251,191,36,0.6); }
-  .timeline-dot.afternoon { background: linear-gradient(135deg, #38bdf8, #0284c7); box-shadow: 0 0 10px rgba(56,189,248,0.6); }
-  .timeline-dot.evening { background: linear-gradient(135deg, #818cf8, #6366f1); box-shadow: 0 0 10px rgba(129,140,248,0.6); }
-
-  .timeline-time {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-    letter-spacing: 0.05em;
-  }
-
-  .timeline-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 14px;
-    padding: 14px;
-    backdrop-filter: blur(10px);
-    transition: border-color 0.3s, transform 0.2s;
-  }
-
-  .timeline-card:active {
-    transform: scale(0.99);
-    border-color: rgba(249,115,22,0.4);
-  }
-
-  .timeline-card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-
-  .timeline-card-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.3;
-    flex: 1;
-  }
-
-  .timeline-card-subtitle {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-    line-height: 1.5;
-  }
-
-  /* Transport tags */
-  .transport-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    font-family: 'Space Grotesk', sans-serif;
-    white-space: nowrap;
-  }
-
-  .transport-tag.flight { background: rgba(255,107,157,0.15); color: #ff6b9d; border: 1px solid rgba(255,107,157,0.3); }
-  .transport-tag.train { background: rgba(86,204,242,0.12); color: #56ccf2; border: 1px solid rgba(86,204,242,0.25); }
-  .transport-tag.walk { background: rgba(249,202,36,0.12); color: #f9ca24; border: 1px solid rgba(249,202,36,0.25); }
-  .transport-tag.capsule { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
-
-  /* Tags row */
-  .tags-row {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 8px;
-  }
-
-  /* Food tags */
-  .food-option {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(240,147,43,0.1);
-    border: 1px solid rgba(240,147,43,0.2);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 16px;
-    line-height: 1;
-    color: #f0932b;
-    vertical-align: middle;
-  }
-
-  /* Map button */
-  .map-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(3,199,90,0.12);
-    border: 1px solid rgba(3,199,90,0.25);
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 16px;
-    line-height: 1;
-    color: #03c75a;
-    text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    transition: background 0.2s, transform 0.1s;
-    letter-spacing: 0.03em;
-    margin-top: 8px;
-    vertical-align: middle;
-  }
-
-  .map-btn:active { transform: scale(0.97); background: rgba(3,199,90,0.2); }
-
-  /* Time period headers */
-  .period-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 0 8px;
-    margin-bottom: 4px;
-  }
-
-  .period-icon { font-size: 1rem; }
-
-  .period-title {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .period-title.morning { color: #f9ca24; }
-  .period-title.afternoon { color: #56ccf2; }
-  .period-title.evening { color: #a855f7; }
-
-  /* Divider */
-  .section-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-    margin: 24px 16px;
-  }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 30px 20px 40px;
-    color: var(--text-muted);
-    font-size: 0.72rem;
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: 0.05em;
-  }
-
-  .footer-flag { font-size: 1.2rem; display: block; margin-bottom: 8px; animation: floatFlag 3s ease-in-out infinite; }
-
-  /* Number badge */
-  .num-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    background: var(--gradient-kr);
-    border-radius: 50%;
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: white;
-    font-family: 'Space Grotesk', sans-serif;
-    flex-shrink: 0;
-    margin-right: 6px;
-  }
-
-  .highlight-text {
-    background: var(--gradient-kr);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700;
-  }
-
-  /* Responsive */
-  @media (max-width: 380px) {
-    .city-time { font-size: 1.3rem; }
-    .hero-title { font-size: 2rem; }
-  }
-
-  /* Transit connector */
-  .transit-connector {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0 0 6px 0;
-    margin-left: 9px;
-    margin-top: -10px;
-    position: relative;
-  }
-
-  .transit-icon-wrap {
-    width: 43px;
-    height: 43px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 34px;
-    flex-shrink: 0;
-    border: none;
-    background: transparent;
-  }
-
-  .transit-body {
-    flex: 1;
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 10px;
-    padding: 8px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .transit-label {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    line-height: 1.4;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .transit-label strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .transit-route {
-    font-size: 16px;
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  .transit-duration {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    white-space: nowrap;
-    background: rgba(255,255,255,0.05);
-    border-radius: 6px;
-    padding: 2px 8px;
-    flex-shrink: 0;
-  }
-
-  .transit-taxi .transit-body { border-color: rgba(249,202,36,0.15); }
-  .transit-taxi .transit-duration { color: #f9ca24; }
-  .transit-metro .transit-body { border-color: rgba(86,204,242,0.15); }
-  .transit-metro .transit-duration { color: #56ccf2; }
-  .transit-rail .transit-body { border-color: rgba(168,85,247,0.15); }
-  .transit-rail .transit-duration { color: #c084fc; }
-</style>
-</head>
-<body>
-
-<!-- Floating Flag -->
-
-<!-- Sticky Header -->
-<div class="sticky-header">
-  <div>
-    <div class="header-title">2026釜山</div>
-    <div class="header-dates">2026.05.09 — 2026.05.11</div>
-  </div>
-  <div style="display:flex;gap:8px;">
-    <a href="#day1" style="text-decoration:none;display:inline-flex;align-items:center;background:rgba(129,140,248,0.15);border:1px solid rgba(129,140,248,0.3);border-radius:8px;padding:8px 14px;font-size:18px;font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;"><span style="background:linear-gradient(135deg,#818cf8,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">D1</span></a>
-    <a href="#day2" style="text-decoration:none;display:inline-flex;align-items:center;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.25);border-radius:8px;padding:8px 14px;font-size:18px;font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;"><span style="background:linear-gradient(135deg,#818cf8,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">D2</span></a>
-    <a href="#day3" style="text-decoration:none;display:inline-flex;align-items:center;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);border-radius:8px;padding:8px 14px;font-size:18px;font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;"><span style="background:linear-gradient(135deg,#818cf8,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">D3</span></a>
-  </div>
-</div>
-
-<!-- Hero -->
-<div class="hero">
-  <span class="hero-flag">🇰🇷</span>
-  <div class="hero-title">BUSAN</div>
-  <div class="hero-subtitle">부산 · 釜山三天二夜</div>
-  <div class="hero-badges">
-    <div class="badge">📅 <span>05/09–05/11</span></div>
-    <div class="badge">🏨 <span>Felix by STX</span></div>
-    <div class="badge">✈️ <span>Eastar Jet</span></div>
-    <div class="badge">🌊 <span>海雲台</span></div>
-  </div>
-</div>
-
-<!-- ===== FLIGHTS ===== -->
-<div class="flight-section">
-  <div class="section-label">✈️ 航班資訊</div>
-
-  <!-- Outbound -->
-  <div class="flight-card">
-    <div class="flight-header">
-      <span class="flight-tag outbound">去程</span>
-      <span class="flight-number">Eastar Jet ZE988</span>
-    </div>
-    <div class="flight-route">
-      <div class="flight-city">
-        <div class="city-time">02:35</div>
-        <div class="city-name">🛫 桃園 T1</div>
-      </div>
-      <div class="flight-middle">
-        <span class="plane-icon">✈️</span>
-        <div class="flight-line"></div>
-        <div class="flight-duration">2h 30m</div>
-      </div>
-      <div class="flight-city right">
-        <div class="city-time">06:05</div>
-        <div class="city-name">金海機場 🛬</div>
-      </div>
-    </div>
-    <div class="flight-date">📅 2026年5月9日（星期六）</div>
-    <div style="margin-top:10px; display:flex; gap:8px;">
-      <a href="https://maps.app.goo.gl/wDbCatFk61xow7x16" target="_blank" class="map-btn" style="background:rgba(66,133,244,0.12);border-color:rgba(66,133,244,0.25);color:#4285f4;">📍 桃園機場</a>
-      <a href="https://maps.app.goo.gl/yi3hNZUD464dttV57" target="_blank" class="map-btn" style="background:rgba(66,133,244,0.12);border-color:rgba(66,133,244,0.25);color:#4285f4;">📍 金海機場</a>
-    </div>
-  </div>
-
-  <!-- Return -->
-  <div class="flight-card return">
-    <div class="flight-header">
-      <span class="flight-tag return">回程</span>
-      <span class="flight-number">Eastar Jet ZE983</span>
-    </div>
-    <div class="flight-route">
-      <div class="flight-city">
-        <div class="city-time">22:00</div>
-        <div class="city-name">🛫 金海機場</div>
-      </div>
-      <div class="flight-middle">
-        <span class="plane-icon">✈️</span>
-        <div class="flight-line"></div>
-        <div class="flight-duration">2h 20m</div>
-      </div>
-      <div class="flight-city right">
-        <div class="city-time">00:20</div>
-        <div class="city-name">桃園 T1 🛬</div>
-      </div>
-    </div>
-    <div class="flight-date">📅 2026年5月11日（星期一）→ 5月12日抵台</div>
-  </div>
-</div>
-
-<!-- ===== HOTEL ===== -->
-<div class="flight-section" style="padding-top:10px;">
-  <div class="section-label">🏨 住宿資訊</div>
-  <div class="hotel-card">
-    <div class="hotel-name">Felix by STX Hotel</div>
-    <div class="hotel-address">釜山廣域市 海雲台區 佑洞 539-10<br>부산광역시 해운대구 우동 539-10</div>
-    <div class="hotel-meta">
-      <div class="hotel-badge">⏰ 入住 15:00</div>
-      <div class="hotel-badge">🕙 退房 11:00</div>
-    </div>
-    <div class="booking-id"><span style="-webkit-user-select:none;user-select:none;" x-apple-data-detectors="false">訂房編號：1128146815310084</span> ｜ HU MIN TZU</div>
-    <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn">📍 NAVER Map 開啟飯店位置</a>
-  </div>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- ===== 準備清單 ===== -->
-<div class="flight-section" style="padding-top:10px;padding-bottom:10px;">
-  <div class="section-label">🧳 出發前準備清單</div>
-  <div class="timeline-card" style="position:relative;overflow:hidden;">
-    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#22c55e,#10b981);"></div>
-    <div style="height:2px;"></div>
-
-    <!-- 入境申請按鈕 -->
-    <a href="https://www.e-arrivalcard.go.kr/portal/main/index.do?locale=CH" target="_blank" style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.25);border-radius:12px;padding:12px 14px;text-decoration:none;margin-bottom:14px;">
-      <div>
-        <div style="font-size:16px;font-weight:500;color:#f0f6fc;">🛬 韓國入境申請</div>
-        <div style="font-size:13px;color:#8b949e;margin-top:2px;">入境三天前完成</div>
-      </div>
-      <div style="font-size:16px;color:#38bdf8;font-family:'Space Grotesk',sans-serif;font-weight:600;white-space:nowrap;">點此申請 →</div>
-    </a>
-
-    <!-- 進度 -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-      <div style="font-size:13px;color:#8b949e;" id="cl-text">0 / 7</div>
-    </div>
-    <div style="height:3px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:14px;overflow:hidden;">
-      <div id="cl-bar" style="height:100%;background:linear-gradient(90deg,#f97316,#fbbf24);border-radius:2px;width:0%;transition:width 0.3s;"></div>
-    </div>
-
-    <!-- 證件 / 金錢 -->
-    <div style="font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#8b949e;font-family:'Space Grotesk',sans-serif;margin-bottom:8px;">📄 證件 / 金錢</div>
-
-    <div class="cl-item" data-id="c1" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
-      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
-      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">📄 護照</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">確認有效期 6 個月以上</div></div>
-    </div>
-
-    <div class="cl-item" data-id="c2" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
-      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
-      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">💵 美金</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">當地兌換韓幣</div></div>
-    </div>
-
-    <div class="cl-item" data-id="c3" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
-      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
-      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🚇 T-money 交通卡</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">搭地鐵 / 公車用</div></div>
-    </div>
-
-    <div style="height:1px;background:rgba(255,255,255,0.06);margin:8px 0;"></div>
-
-    <!-- 手機 / 網路 -->
-    <div style="font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#8b949e;font-family:'Space Grotesk',sans-serif;margin:8px 0;">📱 手機 / 網路</div>
-
-    <div class="cl-item" data-id="c4" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
-      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
-      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🌐 韓國網卡 / eSIM 啟用</div></div>
-    </div>
-
-    <div class="cl-item" data-id="c5" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
-      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
-      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🗺 下載 NAVER Map APP</div></div>
-    </div>
-
-    <div class="cl-item" data-id="c6" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
-      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
-      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🚕 下載 Kakao T</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">叫計程車用</div></div>
-    </div>
-
-    <div class="cl-item" data-id="c7" onclick="clToggle(this)" style="display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer;">
-      <div class="cl-box" style="width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:transparent;transition:all 0.2s;">✓</div>
-      <div><div class="cl-label" style="font-size:16px;color:#f0f6fc;transition:opacity 0.2s;">🔌 插座轉接頭</div><div style="font-size:13px;color:#8b949e;margin-top:2px;">韓國是雙圓腳插</div></div>
-    </div>
-
-  </div>
-</div>
-
+:root{--bg:#f6f7f9;--fg:#1d2330;--card:#fff;--bd:#d9dde5;--ac:#2f5bd8;--mut:#6b7385;--ok:#177245;--bad:#b3261e;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171d;--fg:#e6e9ef;--card:#1e222b;--bd:#343a47;--ac:#7d9cff;--mut:#9aa3b5;--ok:#5fd19a;--bad:#ff8a80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14171d;--fg:#e6e9ef;--card:#1e222b;--bd:#343a47;--ac:#7d9cff;--mut:#9aa3b5;--ok:#5fd19a;--bad:#ff8a80;color-scheme:dark}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 -apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:4px 0 12px}h2{font-size:17px;margin:0 0 8px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;margin-bottom:14px}
+nav{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+button{font:inherit;border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:8px;padding:6px 14px;cursor:pointer}
+button.on,button.pri{background:var(--ac);color:#fff;border-color:var(--ac)}
+button:disabled{opacity:.4;cursor:not-allowed}
+input[type=number],input[type=text]{font:inherit;background:var(--bg);color:var(--fg);border:1px solid var(--bd);border-radius:6px;padding:4px 6px;width:80px}
+input[type=text]{width:140px}
+.row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.mut{color:var(--mut);font-size:13px}
+.wrap{overflow-x:auto;max-height:560px;overflow-y:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--bd);padding:4px 8px;text-align:center;white-space:nowrap}
+th{position:sticky;top:0;background:var(--card)}
+.chip{display:inline-block;border:1px solid var(--bd);border-radius:14px;padding:1px 10px;margin:2px}
+.chip.w{border-color:var(--ok);color:var(--ok)}
+.roll{font-size:34px;text-align:center;padding:18px;font-weight:700;color:var(--ac)}
+.bad{color:var(--bad)}.ok{color:var(--ok)}
+.rule li{margin:2px 0}
+.u{display:inline-block;border:1px solid var(--bd);border-radius:8px;padding:2px 8px;margin:3px;text-align:left}.u b{display:block;font-size:16px}.t{display:block;white-space:nowrap;font-size:16px;cursor:pointer;padding:3px 4px}.t input[type=number]{width:70px;height:32px;font-size:16px;margin-left:0}
+.t input[type=number]::-webkit-inner-spin-button{opacity:1;height:30px;cursor:pointer}
+.mx{table-layout:fixed;border-collapse:collapse;width:100%;min-width:840px;margin-bottom:8px}
+.mx th,.mx td{border:1px solid var(--bd);padding:0}
+.mx th{padding:6px;font-size:16px;background-color:var(--card);background-image:linear-gradient(rgba(128,128,128,.18),rgba(128,128,128,.18))}
+.cell{display:flex;align-items:stretch;min-height:56px}
+.fl{width:58px;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:22px;font-weight:700;border-right:1px solid var(--bd);background:rgba(128,128,128,.12)}
+.fl small{font-size:13px;font-weight:400;color:var(--mut)}
+.ctl{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:4px 6px}
+.blank{background:rgba(128,128,128,.25)}
+.fc{width:60px;text-align:center;font-size:15px;font-weight:600;color:var(--mut);background:rgba(128,128,128,.12)}
+.un{font-size:14px;color:var(--mut)}
+#tb tr:nth-child(even){background:rgba(128,128,128,.1)}
+nav{align-items:center}.ar{color:var(--mut);font-size:22px;font-weight:700}
+.nx{text-align:center;margin:16px 0}.big{font-size:18px;padding:12px 28px}
+.warn{border:2px solid var(--bad);color:var(--bad);border-radius:8px;padding:12px;margin:12px 0;font-size:17px}.warn:empty{display:none}.warn button{margin-top:8px;margin-right:8px;font-size:16px}
+#rpt{display:none}
+@page{size:A4 portrait;margin:12mm}
+@media print{nav,.noprint{display:none}
+html,body{background:#fff!important}main{display:none!important}
+#rpt{display:block;color:#000;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#rpt h1{font-size:38px;text-align:center;margin:0 0 6px}
+#rpt .rm{text-align:center;color:#333;font-size:22px;margin-bottom:16px}
+#rpt h2{font-size:26px;background:#e8ecf5;border-left:8px solid #2f5bd8;padding:8px 14px;margin:0 0 14px}
+#rpt .pg{break-before:page}
+#rpt .rb{margin-bottom:16px;break-inside:avoid}
+#rpt .rh{font-weight:700;margin-bottom:6px;font-size:22px}
+#rpt .rh span{font-weight:400;color:#444;margin-left:12px;font-size:18px}
+#rpt table{width:100%;border-collapse:separate;border-spacing:3px;background:#333;border:0;table-layout:fixed}
+#rpt th,#rpt td{border:0;background:#fff;padding:14px 12px;text-align:left;vertical-align:top;font-size:20px;line-height:2}
+#rpt th{width:100px;padding:8px 4px;background:#f1f2f6;line-height:1.5;text-align:center;vertical-align:middle;font-weight:700}
+#rpt .w{background:#e7f5ec;font-weight:700}
+#rpt .pl{display:inline-block;border:1.5px solid #888;border-radius:8px;padding:0 4px;margin:0;text-align:center;white-space:nowrap;font-size:21px;line-height:1.7;background:#fff;font-weight:400}
+#rpt .gl{display:grid;gap:10px 10px}
+#rpt .w .pl{border-color:#177245;color:#0b4f2e;font-weight:700}
+#rpt .tot{font-size:20px;line-height:2.1;margin-top:12px}
+#rpt .tot b{display:block;margin-bottom:6px;font-size:22px}}
+</style></head><body><main>
+<h1>天鑽 機車位抽籤系統</h1>
+<nav>
+<button data-tab="set" class="on">① 設定與登記</button>
+<span class="ar">➜</span><button data-tab="draw">② 公開抽籤</button>
+<span class="ar">➜</span><button data-tab="res">③ 結果</button>
+<button data-tab="rule" style="margin-left:auto">規則說明</button>
+</nav>
+
+<section id="set">
+<div class="card"><h2>本年度車位數量</h2>
+<div class="row">
+<label>民國 <input type="number" id="year" min="100"> 年度</label>
+<label>一般機車位 <input type="number" id="capn" min="0"> 個</label>
+<label>重型機車位 <input type="number" id="caph" min="0"> 個</label>
+</div></div>
+<div class="card"><h2>住戶登記（共 <span id="cnt"></span> 戶）</h2>
+<p class="mut">第一輪：每戶限一名代表。數字＝參加到第幾輪：勾選＝1（只參加第一輪），填 2＝參加第一、二輪，以此類推，0＝不參加。登記序號僅供核對，不代表順位。開始抽籤後請勿再修改登記。</p>
+<div class="row" id="stat" style="margin-bottom:8px;flex-direction:column;align-items:flex-start;gap:6px;font-size:18px;font-weight:600;color:var(--fg);border:2px solid var(--ac);border-radius:8px;padding:8px 14px"></div>
+<button id="clr" class="noprint" style="margin-bottom:8px">清除重填</button>
+<div class="wrap"><table class="mx"><colgroup><col style="width:60px"><col><col><col><col></colgroup><tbody id="tb1"></tbody></table><table class="mx"><colgroup><col style="width:60px"><col><col><col><col></colgroup><thead>
+<tr><th></th><th>285號 A</th><th>293號 B</th><th>289號 C</th><th>291號 D</th></tr>
+
+</thead><tbody id="tb"></tbody></table></div></div>
+</section>
+
+<section id="draw" hidden>
+<div id="dcards"></div>
+</section>
+
+<section id="res" hidden>
+<div id="resbody"></div>
+<div class="nx noprint"><button class="pri big" onclick="buildRpt();window.print()">列印結果</button></div>
+</section>
+
+<section id="rule" hidden><div class="card rule">
+<h2>抽籤規則摘要</h2>
+<ol>
+<li><b>分開辦理</b>：一般機車位與重型機車位分別登記及抽籤，互不影響。</li>
+<li><b>登記</b>：每戶限一名代表，不得重複登記；有額外需求可登記第二輪、第三輪…。登記先後不影響中籤機會，截止後統一以電腦程式公開抽籤。</li>
+<li><b>抽籤</b>：當輪申請人數未超過剩餘車位，全部中籤；超過則公開抽籤。每輪抽完先確認名單與剩餘車位再抽下一輪；不論前一輪是否中籤，皆可參加後續已登記的輪次；取得車位數不設上限；額滿即停止。</li>
+<li><b>車位額滿後</b>：中籤者放棄、喪失住戶資格或未依規定完成承租手續而空出的車位，另行公告處理方式。</li>
+<li><b>原車位</b>：去年中籤者仍須重新登記，沒有優先權。再次中籤者沿用原車位；新中籤者的車位由管委會統一分配，不得自選；去年中籤但今年未中籤者，須依通知期限遷離。</li>
+<li><b>其他</b>：租屋者須附租約影本，租期需涵蓋承租期間，租約提前終止須於 7 日內通知並依期限遷離；中籤後依期限完成車輛登記與承租手續；使用人或車牌變更須重新登記；車位不得轉讓、轉租或借人使用；資料不實管委會得取消資格。抽籤日期、時間、地點另行公告。</li>
+</ol></div></section>
+</main>
+<div id="rpt"></div>
 <script>
-const CL_KEY = 'busan_checklist_v1';
-const CL_TOTAL = 7;
-function clGetState() { try { return JSON.parse(localStorage.getItem(CL_KEY)) || {}; } catch { return {}; } }
-function clToggle(el) {
-  const box = el.querySelector('.cl-box');
-  const label = el.querySelector('.cl-label');
-  const checked = el.dataset.checked !== 'true';
-  el.dataset.checked = checked;
-  box.style.background = checked ? '#f97316' : 'transparent';
-  box.style.borderColor = checked ? '#f97316' : 'rgba(255,255,255,0.2)';
-  box.style.color = checked ? 'white' : 'transparent';
-  label.style.opacity = checked ? '0.35' : '1';
-  label.style.textDecoration = checked ? 'line-through' : 'none';
-  const state = clGetState();
-  state[el.dataset.id] = checked;
-  localStorage.setItem(CL_KEY, JSON.stringify(state));
-  clUpdateProgress();
+const U=[];
+U.push('281-1F','283-1F','285-1F','287-1F','289-1F','212-1F');
+[285,289,291].forEach(n=>U.push(n+'-4F'));
+for(let f=5;f<=19;f++)[285,289,291,293].forEach(n=>{if(!(n===293&&f===12))U.push(n+'-'+f+'F')});
+const T={n:'一般機車',h:'重型機車'};
+let S={year:new Date().getFullYear()-1911,cap:{n:0,h:0},reg:{},draws:{n:[],h:[]}};
+try{const s=localStorage.getItem('tz-lot');if(s)S=Object.assign(S,JSON.parse(s))}catch(e){}
+const save=()=>{try{localStorage.setItem('tz-lot',JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id);
+function R(u,t){S.reg[u]=S.reg[u]||{};return S.reg[u][t]=S.reg[u][t]||{r1:0,ex:0,prev:0}}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=crypto.getRandomValues(new Uint32Array(1))[0]%(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+const won=t=>S.draws[t].reduce((s,d)=>s+d.winners.length,0);
+const rem=t=>S.cap[t]-won(t);
+const apps=(t,r)=>U.filter(u=>{const g=R(u,t);return g.ex>=r||(r===1&&g.r1)});
+
+$('cnt').textContent=U.length;
+$('year').value=S.year;$('capn').value=S.cap.n;$('caph').value=S.cap.h;
+$('year').oninput=e=>{S.year=+e.target.value;save()};
+$('capn').oninput=e=>{S.cap.n=Math.max(0,+e.target.value||0);save();drawUI()};
+$('caph').oninput=e=>{S.cap.h=Math.max(0,+e.target.value||0);save();drawUI()};
+
+const COLS=[285,293,289,291];
+const ctl=u=>['n','h'].map(t=>{const r=R(u,t);return `<label class="t">${t==='n'?'一般':'重型'} <input type="checkbox" data-t="${t}" data-k="r1" ${r.r1?'checked':''}><input type="number" min="0" max="10" data-t="${t}" data-k="ex" value="${r.ex}"></label>`}).join('');
+const cell=(u,lab)=>`<td><div class="cell" data-u="${u}"><div class="ctl">${lab?`<b class="un">${lab}</b>`:''}${ctl(u)}</div></div></td>`;
+const F1=U.filter(u=>u.split('-')[1]==='1F'),lab1=u=>u.split('-')[0]+'號';
+$('tb1').innerHTML='<tr><td class="fc" rowspan="2">1F</td>'+F1.slice(0,4).map(u=>cell(u,lab1(u))).join('')+'</tr><tr>'+F1.slice(4).map(u=>cell(u,lab1(u))).join('')+'<td></td>'.repeat(8-F1.length)+'</tr>';
+$('tb').innerHTML=Array.from({length:16},(_,i)=>i+4).map(f=>'<tr><td class="fc">'+f+'F</td>'+COLS.map(c=>{const u=c+'-'+f+'F';return U.includes(u)?cell(u):'<td class="blank"></td>'}).join('')+'</tr>').join('');
+$('tb1').onchange=$('tb').onchange=e=>{const i=e.target,u=i.closest('[data-u]').dataset.u;const g=R(u,i.dataset.t),k=i.dataset.k,box=i.closest('.t');if(k==='r1')g.ex=i.checked?Math.max(1,g.ex):0;else g.ex=Math.max(0,+i.value||0);g.r1=g.ex>0?1:0;box.querySelector('[data-k=r1]').checked=!!g.r1;box.querySelector('[data-k=ex]').value=g.ex;save();stat()};
+function stat(){$('stat').innerHTML=['n','h'].map(t=>{const mx=Math.max(1,...U.map(u=>R(u,t).ex)),nm=['一','二','三','四','五','六','七','八','九','十'];let s='';for(let r=1;r<=mx;r++)s+=`第${nm[r-1]||r}輪 <b style="color:var(--ac);font-size:24px">${apps(t,r).length}</b> 戶　`;return `<div><b>${T[t]}</b>：${s}</div>`}).join('')}
+
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));['set','draw','res','rule'].forEach(s=>$(s).hidden=s!==b.dataset.tab);if(b.dataset.tab==='draw')drawUI();if(b.dataset.tab==='res')resUI()});
+
+let DL=null;try{if(window.claude)claude.use('downloads').then(d=>{DL=d}).catch(()=>{})}catch(e){}
+function logText(t,d){const ap=d.apps||[];return ['天鑽機車位抽籤紀錄','年度：民國 '+S.year+' 年','車種：'+T[t],'輪次：第 '+d.round+' 輪','抽籤時間：'+d.time,'車位總數：'+S.cap[t]+'　本輪前剩餘：'+d.before+'　本輪後剩餘：'+(d.before-d.winners.length),'抽籤方式：'+(ap.length<=d.before?'申請人數未超過剩餘車位，全部中籤':'瀏覽器密碼學亂數 crypto.getRandomValues + Fisher-Yates 洗牌'),'','申請名單（'+d.applicants+' 戶）：'+ap.join('、'),'','中籤名單（依抽出順序，'+d.winners.length+' 戶）：',...d.winners.map((u,i)=>(i+1)+'. '+u),'','本輪未中籤名單：',...(d.wait.length?[d.wait.join('、')]:['無'])].join('\n')}
+function saveLog(t,d){if(!DL)return;DL.save({filename:'抽籤LOG_'+T[t]+'_第'+d.round+'輪_'+d.time.replace(/\D/g,'')+'.txt',data:logText(t,d)}).catch(()=>{})}
+const busy={n:0,h:0},undoArm={n:0,h:0};
+$('dcards').innerHTML=['n','h'].map(t=>`<div class="card" id="c-${t}" style="border-left:6px solid var(--ac)"><h2 id="dt-${t}"></h2><div id="di-${t}"></div><div id="da-${t}" style="margin:8px 0"></div><div class="roll" id="roll-${t}">—</div><div class="row"><button class="pri" data-act="go" data-t="${t}" id="go-${t}">開始抽籤</button><button class="pri" data-act="all" data-t="${t}" id="all-${t}">一次抽完全部輪次</button><button data-act="undo" data-t="${t}" id="undo-${t}">重設抽籤</button></div><div id="lg-${t}" style="margin-top:14px"></div></div>`).join('');
+function drawUI(){['n','h'].forEach(t=>{
+ const r=S.draws[t].length+1,a=apps(t,r),m=rem(t);
+ $('dt-'+t).textContent=`${T[t]}（民國 ${S.year} 年度）`;
+ $('di-'+t).innerHTML=`總數 <b>${S.cap[t]}</b>　已中籤 <b>${won(t)}</b>　剩餘 <b>${m}</b><br>下一輪：<b>第 ${r} 輪</b>，申請 <b>${a.length}</b> 戶`+(m<=0&&S.cap[t]>0?'<br><span class="ok">車位已額滿，抽籤結束。</span>':a.length===0&&S.cap[t]>0?'<br><span class="mut">沒有人登記此輪，抽籤結束。</span>':'');
+ $('da-'+t).innerHTML=a.length&&m>0?`<b>第 ${r} 輪申請名單（${a.length} 戶）：</b><br>${a.map(u=>`<span class="chip">${u}</span>`).join('')}`:'';
+ const dis=!!busy[t]||m<=0||a.length===0||S.cap[t]===0;
+ $('go-'+t).disabled=$('all-'+t).disabled=dis;
+ $('go-'+t).textContent=a.length>m&&m>0?`公開抽籤（第 ${r} 輪）`:`確認第 ${r} 輪結果`;
+ $('undo-'+t).textContent=undoArm[t]?'再按一次確認重設':'重設抽籤';
+ $('lg-'+t).innerHTML='<b>抽籤結果（含時間，可截圖）</b><br>'+(S.draws[t].map(d=>`<div style="margin:8px 0"><b>第 ${d.round} 輪</b>　<span class="mut">${d.time||''}</span><br>申請 ${d.applicants} 戶／中籤 ${d.winners.length}：${d.winners.map(u=>`<span class="chip w">${u}</span>`).join('')}${d.wait.length?`<br>本輪未中籤：${d.wait.map(u=>`<span class="chip">${u}</span>`).join('')}`:''}</div>`).join('')||'<span class="mut">尚未抽籤</span>');
+});if($('warn'))$('warn').innerHTML=''}
+const stamp=()=>new Date().toLocaleString('zh-TW',{hour12:false});
+function roll(t,pool,done){let n=0;const iv=setInterval(()=>{$('roll-'+t).textContent=pool[Math.floor(Math.random()*pool.length)];if(++n>18){clearInterval(iv);done()}},70)}
+function runGo(t){
+ const r=S.draws[t].length+1,a=apps(t,r),m=rem(t);
+ if(busy[t]||m<=0||!a.length||!S.cap[t])return;
+ busy[t]=1;drawUI();
+ const fin=()=>{
+  let w,q=[];
+  if(a.length<=m)w=a;else{const sh=shuffle(a);w=sh.slice(0,m);q=sh.slice(m)}
+  S.draws[t].push({round:r,applicants:a.length,apps:a,before:m,winners:w,wait:q,time:stamp()});save();
+  $('roll-'+t).textContent=`第 ${r} 輪完成：中籤 ${w.length} 戶`;busy[t]=0;drawUI();
+ };
+ if(a.length<=m)fin();else roll(t,a,fin);
 }
-function clUpdateProgress() {
-  const state = clGetState();
-  const done = Object.values(state).filter(Boolean).length;
-  document.getElementById('cl-text').textContent = `${done} / ${CL_TOTAL}`;
-  document.getElementById('cl-bar').style.width = `${(done/CL_TOTAL)*100}%`;
+function runAll(t){
+ if(busy[t]||rem(t)<=0||!S.cap[t])return;
+ const a1=apps(t,S.draws[t].length+1);if(!a1.length)return;
+ busy[t]=1;drawUI();
+ roll(t,a1,()=>{
+  let rounds=0,win=0;
+  while(rem(t)>0){
+   const r=S.draws[t].length+1,a=apps(t,r),m=rem(t);if(!a.length)break;
+   let w,q=[];if(a.length<=m)w=a;else{const sh=shuffle(a);w=sh.slice(0,m);q=sh.slice(m)}
+   S.draws[t].push({round:r,applicants:a.length,apps:a,before:m,winners:w,wait:q,time:stamp()});
+   rounds++;win+=w.length;
+  }
+  save();$('roll-'+t).textContent=`全部完成：共抽 ${rounds} 輪，中籤 ${win} 戶`;busy[t]=0;drawUI();
+ });
 }
-window.addEventListener('load', () => {
-  const state = clGetState();
-  document.querySelectorAll('.cl-item').forEach(el => {
-    if (state[el.dataset.id]) {
-      el.dataset.checked = 'true';
-      const box = el.querySelector('.cl-box');
-      const label = el.querySelector('.cl-label');
-      box.style.background = '#f97316';
-      box.style.borderColor = '#f97316';
-      box.style.color = 'white';
-      label.style.opacity = '0.35';
-      label.style.textDecoration = 'line-through';
-    }
-  });
-  clUpdateProgress();
-});
-</script>
-
-<div class="section-divider"></div>
-
-<!-- ===== DAY 1 ===== -->
-<div class="day-section" id="day1">
-  <div class="day-label-wrap">
-    <div class="day-label">DAY 1</div>
-    <div class="day-date">5月9日（六）</div>
-    <div class="day-divider"></div>
-  </div>
-
-  <!-- 早上 -->
-  <div class="period-header">
-    <span class="period-icon">☀️</span>
-    <span class="period-title morning">Morning · 早上</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 🚊 機場 → 飯店 交通 -->
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:linear-gradient(135deg,#c084fc,#56ccf2);box-shadow:0 0 10px rgba(192,132,252,0.5);"></div>
-      <div class="timeline-card" style="border-color:rgba(192,132,252,0.2);">
-        <div style="font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:#c084fc;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:10px;">✈️ 機場 → 飯店</div>
-
-        <!-- 第一段：輕軌 -->
-        <div style="display:flex;align-items:flex-start;gap:10px;">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div style="width:32px;height:32px;border-radius:8px;background:rgba(192,132,252,0.15);border:1px solid rgba(192,132,252,0.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🚝</div>
-            <div style="width:1px;height:36px;background:linear-gradient(180deg,rgba(192,132,252,0.4),rgba(86,204,242,0.4));margin:3px 0;"></div>
-          </div>
-          <div style="flex:1;padding-top:4px;">
-            <div style="font-size:16px;font-weight:600;color:#c084fc;font-family:'Space Grotesk',sans-serif;">釜山金海輕軌</div>
-            <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">金海國際機場 → 沙上站</div>
-          </div>
-        </div>
-
-        <!-- 第二段：地鐵 -->
-        <div style="display:flex;align-items:flex-start;gap:10px;margin-top:2px;">
-          <div style="width:32px;height:32px;border-radius:8px;background:rgba(86,204,242,0.12);border:1px solid rgba(86,204,242,0.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🚊</div>
-          <div style="flex:1;padding-top:4px;">
-            <div style="font-size:16px;font-weight:600;color:#56ccf2;font-family:'Space Grotesk',sans-serif;">地鐵 2 號線</div>
-            <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">沙上站 → 海雲台站</div>
-          </div>
-        </div>
-
-        <div style="font-size:16px;color:var(--text-muted);margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📌 行李寄放後出發</div>
-      </div>
-    </div>
-
-    <!-- 🏨 飯店出發 -->
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
-      <div class="timeline-card" style="border-color:rgba(249,202,36,0.15);">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="font-size:1rem;">🏨</span>
-          <div>
-            <div style="font-size:0.9rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
-          </div>
-        </div>
-        <div class="tags-row" style="margin-top:8px;">
-          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">出發前往第一站</div>
-      </div>
-    </div>
-
-    <!-- 🚕 飯店 → 모모스커피 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">飯店 → 모모스커피</div>
-        <div style="margin-top:3px;"><span class="transit-duration">10 分 ｜ ₩6,500（138元）</span></div>
-      </div>
-    </div>
-
-    <!-- 1. 모모스커피 -->
-    <div class="timeline-item">
-      <div class="timeline-dot morning"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>09:00 – 09:30</span>
-        <span style="color:var(--text-muted);">⏱ 預計停留 1H</span>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">1</span>
-            <span class="timeline-card-title">모모스커피 마린시티점 <span style="font-size:16px;font-weight:400;color:#f9ca24;">（世界百大）</span></span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">Momos Coffee Marine City</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 海雲台區 佑洞 1410-1</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">🕐 07:00 – 18:00</div>
-        <div class="tags-row">
-          <span class="food-option">☕ 咖啡</span>
-        </div>
-        <a href="https://naver.me/IFE6BqhX" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">吃早餐了</div>
-      </div>
-    </div>
-
-    <!-- 🚕 모모스커피 → 藍線公園 -->
-    <div class="transit-connector transit-taxi">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">모모스커피 → 藍線公園尾浦站</div>
-        <div style="margin-top:3px;"><span class="transit-duration">18 分 ｜ ₩8,700（185元）</span></div>
-      </div>
-    </div>
-
-    <!-- 2. 海雲台藍線公園 -->
-    <div class="timeline-item">
-      <div class="timeline-dot morning"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>10:30 – 11:00</span>
-        <span style="color:var(--text-muted);">⏱ 預計停留 2H</span>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">2</span>
-            <span class="timeline-card-title">海雲台藍線公園</span>
-          </div>
-        </div>
-        <div class="tags-row">
-          <span class="food-option">🌊 美景</span>
-          <span class="food-option">🚃 電車</span>
-        </div>
-        <div style="margin-top:8px;font-size:16px;color:var(--text-muted);line-height:1.6;">
-          📍 尾浦 <span style="color:var(--text-muted)">↔</span> 青沙浦
-        </div>
-        <a href="https://naver.me/GVV8P9Yg" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">
-          <strong style="color:var(--text);">去程</strong>：尾浦 → 青沙浦<br>
-          🚂 搭天空膠囊列車<br>
-          班次：6️⃣號　11:30 – 12:00
-        </div>
-        <div style="height:1px;background:rgba(255,255,255,0.06);margin:8px 0;"></div>
-        <div style="font-size:16px;color:var(--text-muted);">
-          <strong style="color:var(--text);">回程</strong>：青沙浦 → 尾浦<br>
-          🚃 搭海岸電車<br>
-          班次：1️⃣0️⃣號　12:42
-        </div>
-        <div style="height:1px;background:rgba(255,255,255,0.06);margin:8px 0;"></div>
-        <div style="font-size:16px;color:var(--text-muted);">
-          🎫 預約編號：<a href="https://tket.me/CHVcehp" target="_blank" style="color:#38bdf8;text-decoration:none;">RS26005193553 →</a><br>
-          🎫 3人套票 ₩78,000（1,661元）
-        </div>
-      </div>
-    </div>
-
-    <!-- 🚕 青沙浦 → Blue Bottle -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">尾浦 → Blue Bottle</div>
-        <div style="margin-top:3px;"><span class="transit-duration">30 分 ｜ ₩12,100（258元）</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 下午 -->
-  <div class="period-header" style="padding-top:8px;">
-    <span class="period-icon">☕</span>
-    <span class="period-title afternoon">Afternoon · 下午</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 4. Blue Bottle -->
-    <div class="timeline-item">
-      <div class="timeline-dot afternoon"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>13:30</span>
-        <span style="color:var(--text-muted);">⏱ 預計停留 2H</span>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">3</span>
-            <span class="timeline-card-title">블루보틀 부산 민락 카페</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">☕ Blue Bottle Coffee<br>🌉 看廣安大橋 ＋ 放鬆</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 水營區 民樂洞 336-10</div>
-        <div class="tags-row">
-          <span class="food-option">☕ 咖啡</span>
-        </div>
-        <a href="https://naver.me/xAfZzXVb" target="_blank" class="map-btn">📍 NAVER Map</a>
-
-        <!-- 附近餐廳推薦 -->
-        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);">
-          <div style="font-size:16px;color:var(--text-muted);margin-bottom:8px;">🍽 附近餐廳推薦</div>
-
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
-            <div style="width:100%;">
-              <div style="font-size:16px;font-weight:500;color:var(--text);">마니주</div>
-              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">수영구 광안해변로 366 2F</div>
-              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🔥 烤鰻魚</span><a style="margin-top:0;" href="https://naver.me/F1rqxfZk" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
-            </div>
-          </div>
-
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
-            <div style="width:100%;">
-              <div style="font-size:16px;font-weight:500;color:var(--text);">이하정 간장게장</div>
-              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">수영구 광서로10번길 46 1F</div>
-              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🦀 醬蟹</span><a style="margin-top:0;" href="https://naver.me/5JpUOsnD" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
-            </div>
-          </div>
-
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;">
-            <div style="width:100%;">
-              <div style="font-size:16px;font-weight:500;color:var(--text);">예옌</div>
-              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">수영구 수영로 641 2F</div>
-              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🍜 炸醬麵</span><a style="margin-top:0;" href="https://naver.me/GiptLQgD" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- 🚕 Blue Bottle → 新世界百貨 -->
-    <div class="transit-connector transit-taxi">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">Blue Bottle → 新世界百貨</div>
-        <div style="margin-top:3px;"><span class="transit-duration">5 分 ｜ ₩4,800（102元）</span></div>
-      </div>
-    </div>
-
-    <!-- 5. 新世界百貨 -->
-    <div class="timeline-item">
-      <div class="timeline-dot afternoon"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>15:30</span>
-        <span style="color:var(--text-muted);">⏱ 買好逛滿</span>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">4</span>
-            <span class="timeline-card-title">新世界百貨 Centum City</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">🛍 購物 ｜ 全球最大百貨公司之一</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 1495</div>
-        <div class="tags-row">
-          <span class="food-option" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.2);color:#c084fc;">🛍 購物</span>
-        </div>
-        <a href="https://naver.me/5fdSoK6q" target="_blank" class="map-btn">📍 NAVER Map</a>
-      </div>
-    </div>
-
-    <!-- 🚊 新世界 → 廣安里 -->
-    <div class="transit-connector transit-metro" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚊</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>地鐵 2 號線</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">Centum City → 廣安里（出口5）<span class="transit-duration">10 分鐘</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 晚上 -->
-  <div class="period-header" style="padding-top:8px;">
-    <span class="period-icon">🌉</span>
-    <span class="period-title evening">Evening · 晚上 🔥</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 6. 廣安里 -->
-    <div class="timeline-item">
-      <div class="timeline-dot evening"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>19:30</span>
-        <span style="color:var(--text-muted);">⏱ 預計停留 1H</span>
-      </div>
-      <div class="timeline-card" style="border-color:rgba(168,85,247,0.25);">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#ff6b9d);">5</span>
-            <span class="timeline-card-title">廣安里海水浴場</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">
-          🌃 夜景：廣安大橋　✨ 釜山最美夜景之一
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 水營區 民樂洞 192-7</div>
-        <div class="tags-row">
-          <span class="food-option">🌊 美景</span>
-        </div>
-        <a href="https://naver.me/G7NoauMe" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">🚁 無人機表演：20:00 和 22:00<br>🍗 看完表演再找炸雞</div>
-
-      </div>
-    </div>
-
-    <!-- 🚊 廣安里 → 飯店 -->
-    <div class="transit-connector transit-metro" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚊</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>地鐵 2 號線</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">廣安里 → 海雲台<span class="transit-duration">15 分鐘</span></div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
-      <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
-        <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 539-10</div>
-        <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
-          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
-          <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">🛁 腳已發軟，收工</div>
-
-        <!-- 宵夜推薦 -->
-        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);">
-          <div style="font-size:16px;color:var(--text-muted);margin-bottom:8px;">🍽 宵夜推薦</div>
-          <div style="font-size:16px;font-weight:500;color:var(--text);">PURADAK</div>
-          <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">🕐 營業至 23:00</div>
-          <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;">
-            <span class="food-option">🍗 炸雞</span>
-            <span class="food-option">⭐ IU</span>
-            <a href="https://naver.me/G6RDq2dB" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ===== DAY 2 ===== -->
-<div class="section-divider"></div>
-<div class="day-section" id="day2">
-  <div class="day-label-wrap">
-    <div class="day-label">DAY 2</div>
-    <div class="day-date">5月10日（日）</div>
-    <div class="day-divider"></div>
-  </div>
-
-  <!-- 早上 -->
-  <div class="period-header">
-    <span class="period-icon">☀️</span>
-    <span class="period-title morning">Morning · 早上</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 🏨 飯店出發 -->
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
-      <div class="timeline-time">08:30</div>
-      <div class="timeline-card" style="border-color:rgba(249,202,36,0.15);">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="font-size:1rem;">🏨</span>
-          <div>
-            <div style="font-size:0.9rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
-          </div>
-        </div>
-        <div class="tags-row" style="margin-top:8px;">
-          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">出發前往第一站</div>
-      </div>
-    </div>
-
-    <!-- 🚕 飯店 → 스릴온더머그 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label">飯店 → 스릴온더머그</div>
-        <div style="margin-top:3px;"><span class="transit-duration">40 分 ｜ ₩24,500（522元）</span></div>
-      </div>
-    </div>
-
-    <!-- 1. 스릴온더머그 -->
-    <div class="timeline-item">
-      <div class="timeline-dot morning"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>09:00 – 10:30</span>
-        <span style="color:var(--text-muted);">⏱ 預計停留 1H30M</span>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">1</span>
-            <span class="timeline-card-title">스릴온더머그</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">THRILL ON THE MUG</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 影島區 東三洞 1049-23</div>
-        <div class="tags-row">
-          <span class="food-option">☕ 咖啡</span>
-          <span class="food-option">🌊 美景</span>
-        </div>
-        <a href="https://naver.me/GrgAlPWX" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">太宗台高空滑索（Zipline）＋無敵海景咖啡</div>
-      </div>
-    </div>
-
-    <!-- 🚕 松島 → 白淺灘 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label">스릴온더머그 → 白淺灘文化村</div>
-        <div style="margin-top:3px;"><span class="transit-duration">10 分 ｜ ₩8,240（175元）</span></div>
-      </div>
-    </div>
-
-    <!-- 白淺灘文化村 -->
-    <div class="timeline-item">
-      <div class="timeline-dot morning"></div>
-      <div class="timeline-card">
-        <div class="timeline-time" style="display:flex;justify-content:space-between;">
-          <span>10:30 – 11:00</span>
-          <span style="color:var(--text-muted);">⏱ 預計停留 1H30M</span>
-        </div>
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">2</span>
-            <span class="timeline-card-title">白淺灘文化村</span>
-          </div>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 影島區 瀛仙洞四街 605-3</div>
-        <div class="tags-row">
-          <span class="food-option">🌊 美景</span>
-          <span class="food-option">🌤 藍天</span>
-        </div>
-        <a href="https://naver.me/5g4xHr5J" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">必拍：鋼琴階梯、海岸隧道</div>
-      </div>
-    </div>
-
-    <!-- 🚕 白淺灘 → 明星一隻雞 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label">白淺灘文化村 → 明星一隻雞</div>
-        <div style="margin-top:3px;"><span class="transit-duration">8 分 ｜ ₩6,640（141元）</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 中午 -->
-  <div class="period-header" style="padding-top:8px;">
-    <span class="period-icon">🍽</span>
-    <span class="period-title morning">Lunch · 中午</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 3. 明星一隻雞 -->
-    <div class="timeline-item">
-      <div class="timeline-dot morning"></div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">3</span>
-            <span class="timeline-card-title">明星一隻雞</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">Myeongseong 一只鸡</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 影島區 大橋洞一街 163-2</div>
-        <div class="tags-row">
-          <span class="food-option">🍗 美食</span>
-        </div>
-        <a href="https://naver.me/FbVBWPkT" target="_blank" class="map-btn">📍 NAVER Map</a>
-      </div>
-    </div>
-
-    <!-- 🚕 明星一隻雞 → 甘川文化村 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">明星一隻雞 → 甘川文化村</div>
-        <div style="margin-top:3px;"><span class="transit-duration">15 分 ｜ ₩8,100（172元）</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 下午 -->
-  <div class="period-header" style="padding-top:8px;">
-    <span class="period-icon">☕</span>
-    <span class="period-title afternoon">Afternoon · 下午</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 5. 甘川文化村 -->
-    <div class="timeline-item">
-      <div class="timeline-dot afternoon"></div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">4</span>
-            <span class="timeline-card-title">甘川文化村</span>
-          </div>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 沙下區 甘川洞 1-14</div>
-        <div class="tags-row">
-          <span class="food-option">🌊 美景</span>
-          <span class="food-option">👑 小王子</span>
-        </div>
-        <a href="https://naver.me/x3cOpgxb" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">以依山勢建造的階梯式彩色建築聞名，又能俯瞰釜山港海景</div>
-      </div>
-    </div>
-
-    <!-- 選擇分隔 -->
-    <!-- 🚕 甘川文化村 → 5A/5B -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div>
-          <div class="transit-label"><strong>計程車</strong></div>
-          <div class="transit-label" style="justify-content:space-between;margin-top:3px;">甘川文化村 → 5A 札嘎其市場</div>
-        <div style="margin-top:3px;"><span class="transit-duration">10 分 ｜ ₩5,900（126元）</span></div>
-          <div class="transit-label" style="justify-content:space-between;margin-top:6px;color:var(--text-muted);">或　甘川文化村 → 5B 문화공감 수정</div>
-        <div style="margin-top:3px;"><span class="transit-duration">25 分 ｜ ₩9,600（204元）</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align:center;padding:6px 0 6px 0;font-size:16px;color:var(--text-muted);letter-spacing:0.1em;">（2選1）</div>
-
-    <!-- 6A. 札嘎其市場 -->
-    <div class="timeline-item">
-      <div class="timeline-dot afternoon"></div>
-      <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge" style="background:linear-gradient(135deg,#f9ca24,#f0932b);">5A</span>
-            <span class="timeline-card-title">札嘎其市場海鮮</span>
-          </div>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 中區 南浦洞五街 92</div>
-        <div class="tags-row">
-          <span class="food-option">🦞 海鮮</span>
-        </div>
-        <a href="https://naver.me/GxrsX9uT" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">新東亞市場 85 號攤</div>
-      </div>
-    </div>
-
-    <div style="padding-bottom:8px;margin-top:-14px;font-size:16px;color:var(--text-muted);">或</div>
-
-    <!-- 6B. 文化共感水晶 -->
-    <div class="timeline-item">
-      <div class="timeline-dot afternoon"></div>
-      <div class="timeline-card" style="border-color:rgba(168,85,247,0.25);">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#56ccf2);">5B</span>
-            <span class="timeline-card-title">문화공감 수정</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">文化共感水晶（貞蘭閣）</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 東區 水晶洞 1010</div>
-        <div class="tags-row">
-          <span class="food-option">☕ 咖啡</span>
-        </div>
-        <a href="https://naver.me/5bCaPIIE" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">日式老宅｜IU《夜信（밤편지）》MV 拍攝地</div>
-      </div>
-    </div>
-
-    <!-- 🚕 →西面 兩條路線 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div>
-          <div class="transit-label"><strong>計程車</strong></div>
-          <div class="transit-label" style="justify-content:space-between;margin-top:3px;">5A 札嘎其市場 → 西面</div>
-        <div style="margin-top:3px;"><span class="transit-duration">30 分 ｜ ₩12,300（262元）</span></div>
-          <div class="transit-label" style="justify-content:space-between;margin-top:6px;color:var(--text-muted);">或　5B 문화공감 수정 → 西面</div>
-        <div style="margin-top:3px;"><span class="transit-duration">25 分 ｜ ₩10,500（224元）</span></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 晚上 -->
-  <div class="period-header" style="padding-top:8px;">
-    <span class="period-icon">🌉</span>
-    <span class="period-title evening">Evening · 晚上</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 7. 西面 -->
-    <div class="timeline-item">
-      <div class="timeline-dot evening"></div>
-      <div class="timeline-card" style="border-color:rgba(168,85,247,0.2);">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge" style="background:linear-gradient(135deg,#a855f7,#ff6b9d);">6</span>
-            <span class="timeline-card-title">西面</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">西面購物 / 美食</div>
-        <div class="tags-row">
-          <span class="food-option">🛍 購物</span>
-          <span class="food-option">🍽 美食</span>
-        </div>
-        <a href="https://naver.me/xDjsm8Re" target="_blank" class="map-btn">📍 NAVER Map</a>
-
-        <!-- 子項目 -->
-        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;gap:10px;">
-
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div style="width:100%;">
-              <div style="font-size:16px;font-weight:500;color:var(--text);">올드맨션</div>
-              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">田浦洞 687-18</div>
-              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🥩 燒肉</span><a style="margin-top:0;" href="https://naver.me/FFqwbwIw" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
-            </div>
-          </div>
-
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div style="width:100%;">
-              <div style="font-size:16px;font-weight:500;color:var(--text);">STRUT COFFEE <span style="color:#f9ca24;font-size:14px;">（世界百大）</span></div>
-              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">田浦洞 340-31</div>
-              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">☕ 咖啡</span><a style="margin-top:0;" href="https://naver.me/5NeFkFvC" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
-            </div>
-          </div>
-
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div style="width:100%;">
-              <div style="font-size:16px;font-weight:500;color:var(--text);">Hippi</div>
-              <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">田浦洞 354-17</div>
-              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;align-items:center;"><span class="food-option">🍮 甜點</span><a style="margin-top:0;" href="https://naver.me/5NeFkFEI" target="_blank" class="map-btn" style="flex-shrink:0;">📍 NAVER Map</a></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- 🚊 西面 → 海雲台 -->
-    <div class="transit-connector transit-metro" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚊</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>地鐵 2 號線</strong></div>
-        <div class="transit-label" style="justify-content:space-between;">西面 → 海雲台<span class="transit-duration">30 分鐘</span></div>
-      </div>
-    </div>
-
-    <!-- 回飯店 -->
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
-      <div class="timeline-card" style="border-color:rgba(249,202,36,0.2);">
-        <div style="font-size:0.92rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:4px;">釜山廣域市 海雲台區 佑洞 539-10</div>
-        <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
-          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
-          <a href="https://naver.me/xYN6WFz1" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">🛒 錢花光了，人也相當累</div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<div class="section-divider"></div>
-<div class="day-section" id="day3" style="padding-bottom:24px;">
-  <div class="day-label-wrap">
-    <div class="day-label">DAY 3</div>
-    <div class="day-date">5月11日（一）</div>
-    <div class="day-divider"></div>
-  </div>
-  <!-- 早上 -->
-  <div class="period-header" style="padding-top:8px;">
-    <span class="period-icon">☀️</span>
-    <span class="period-title morning">Morning · 早上</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 飯店出發 -->
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 0 10px rgba(249,202,36,0.5);"></div>
-      <div class="timeline-time">08:30</div>
-      <div class="timeline-card" style="border-color:rgba(249,202,36,0.15);">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="font-size:1rem;">🏨</span>
-          <div style="font-size:0.9rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
-        </div>
-        <div class="tags-row" style="margin-top:8px;">
-          <span class="hotel-badge" style="font-size:16px;">🏨 住宿</span>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📌 11:00 前退房，行李寄放後出發</div>
-      </div>
-    </div>
-
-    <!-- 🚕 飯店 → 松島 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label">飯店 → 松島纜車</div>
-        <div style="margin-top:3px;"><span class="transit-duration">40 分 ｜ ₩24,500（522元）</span></div>
-      </div>
-    </div>
-
-    <!-- 1. 松島天空步道 -->
-    <div class="timeline-item">
-      <div class="timeline-dot morning"></div>
-      <div class="timeline-time">09:20</div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">1</span>
-            <span class="timeline-card-title">松島天空步道</span>
-          </div>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 西區 岩南洞 129-4</div>
-        <div class="tags-row">
-          <span class="food-option">🌊 美景</span>
-        </div>
-        <a href="https://naver.me/FkapMlF0" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">韓國最長的海上步道</div>
-        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);">
-          <div style="font-size:16px;color:var(--text-muted);margin-bottom:8px;">🍽 附近餐廳推薦</div>
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;">
-            <div style="width:100%;">
-              <div style="font-size:16px;font-weight:500;color:var(--text);">플루어</div>
-              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;"><span class="food-option">🥐 早餐</span><a style="margin-top:0;" href="https://naver.me/GtUOpuuh" target="_blank" class="map-btn">📍 NAVER Map</a></div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div style="width:100%;">
-              <div style="font-size:16px;font-weight:500;color:var(--text);">아덴블랑제리 부산송도점</div>
-              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;"><span class="food-option">🥐 早餐</span><a style="margin-top:0;" href="https://naver.me/Fk7CvUpX" target="_blank" class="map-btn">📍 NAVER Map</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. 松島海上纜車 -->
-    <div class="timeline-item">
-      <div class="timeline-dot morning"></div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">2</span>
-            <span class="timeline-card-title">松島海上纜車</span>
-          </div>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 西區 岩南洞 765</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">路線：松島灣站 ↔ 松島Sky Park站</div>
-        <div class="tags-row">
-          <span class="food-option">🌊 美景</span>
-        </div>
-        <a href="https://naver.me/FHOZbBgQ" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">全長 1.62 公里，距海面最高86 公尺，單程15–20 分鐘｜設有水晶車廂<br>來回：₩16,000（337元）</div>
-      </div>
-    </div>
-
-    <!-- 🚕 飯店 → 南浦洞 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label">松島纜車 → 南浦洞</div>
-        <div style="margin-top:3px;"><span class="transit-duration">10 分 ｜ ₩6,840（146元）</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 中午 -->
-  <div class="period-header" style="padding-top:8px;">
-    <span class="period-icon">🍽</span>
-    <span class="period-title morning">Lunch · 中午</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 2. 南浦洞午餐 -->
-    <div class="timeline-item">
-      <div class="timeline-dot morning"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>12:00</span>
-        <span style="color:var(--text-muted);">⏱ 預計停留 1H30M</span>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">3</span>
-            <span class="timeline-card-title">南浦洞午餐</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">札嘎其市場 / BIFF 廣場</div>
-
-        <!-- 附近餐廳推薦 -->
-        <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);">
-          <div style="font-size:16px;color:var(--text-muted);margin-bottom:8px;">🍽 附近餐廳推薦</div>
-
-          <div style="margin-bottom:10px;">
-            <div style="font-size:16px;font-weight:500;color:var(--text);">맛찬들왕소금구이 부평점</div>
-            <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">중구 광복로 3 1F</div>
-            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;">
-              <span class="food-option">🥩 烤肉</span>
-              <a href="https://naver.me/502MzKou" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
-            </div>
-          </div>
-
-          <div style="margin-bottom:10px;">
-            <div style="font-size:16px;font-weight:500;color:var(--text);">남포설렁탕</div>
-            <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">중구 구덕로34번길 5 1F</div>
-            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;">
-              <span class="food-option">🍲 雪濃湯</span>
-              <a href="https://naver.me/GctrSsLb" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
-            </div>
-          </div>
-
-          <div>
-            <div style="font-size:16px;font-weight:500;color:var(--text);">누리마을감자탕 자갈치역점</div>
-            <div style="font-size:16px;color:var(--text-muted);margin-top:3px;">중구 구덕로 58 1F</div>
-            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:6px;">
-              <span class="food-option">🔥 火鍋</span>
-              <a href="https://naver.me/GwSSvLQY" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 🚕 南浦洞 → Momos Coffee -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label">南浦洞 → Momos Coffee</div>
-        <div style="margin-top:3px;"><span class="transit-duration">25 分 ｜ ₩17,300（368元）</span></div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 下午 -->
-  <div class="period-header" style="padding-top:8px;">
-    <span class="period-icon">☕</span>
-    <span class="period-title afternoon">Afternoon · 下午</span>
-  </div>
-
-  <div class="timeline">
-
-    <!-- 3. 모모스커피 도모헌점 -->
-    <div class="timeline-item">
-      <div class="timeline-dot afternoon"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>15:00</span>
-        <span style="color:var(--text-muted);">⏱ 預計停留 1H</span>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">4</span>
-            <span class="timeline-card-title">모모스커피 도모헌점 <span style="font-size:16px;font-weight:400;color:#f9ca24;">（世界百大）</span></span>
-          </div>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">수영구 황령산로7번길 60 도모헌 본관 1F</div>
-        <div class="tags-row">
-          <span class="food-option">☕ 咖啡</span>
-        </div>
-        <a href="https://naver.me/xa5RGIGw" target="_blank" class="map-btn" style="margin-top:0;">📍 NAVER Map</a>
-      </div>
-    </div>
-
-    <!-- 🚕 Momos Coffee → X The Sky -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label">Momos Coffee → X The Sky</div>
-        <div style="margin-top:3px;"><span class="transit-duration">23 分 ｜ ₩10,000（213元）</span></div>
-      </div>
-    </div>
-
-    <!-- 5. X The Sky -->
-    <div class="timeline-item">
-      <div class="timeline-dot afternoon"></div>
-      <div class="timeline-time" style="display:flex;justify-content:space-between;">
-        <span>16:30</span>
-        <span style="color:var(--text-muted);">⏱ 預計停留 1H30M</span>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <div>
-            <span class="num-badge">5</span>
-            <span class="timeline-card-title">부산엑스더스카이</span>
-          </div>
-        </div>
-        <div class="timeline-card-subtitle">BUSAN X The Sky</div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">釜山廣域市 海雲台區 中洞 1829　LCT Land Mark Tower 98–100F</div>
-        <div class="tags-row">
-          <span class="food-option">🌆 夜景</span>
-          <span class="food-option">🌊 海景</span>
-        </div>
-        <a href="https://naver.me/xb0TaX4q" target="_blank" class="map-btn">📍 NAVER Map</a>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">韓國第二高觀景台（411.6m）｜🕐 10:00–21:00（最後售票 20:30）<br>🎫 成人 ₩27,000（575元）</div>
-      </div>
-    </div>
-
-    <!-- 🚕 X The Sky → 飯店 -->
-    <div class="transit-connector transit-taxi" style="margin-left:9px;">
-      <div class="transit-icon-wrap">🚕</div>
-      <div class="transit-body">
-        <div class="transit-label"><strong>計程車</strong></div>
-        <div class="transit-label">X The Sky → 飯店</div>
-        <div style="margin-top:3px;"><span class="transit-duration">7 分 ｜ ₩4,800（102元）</span></div>
-      </div>
-    </div>
-
-    <!-- 6. 飯店拿行李 -->
-    <div class="timeline-item">
-      <div class="timeline-dot afternoon"></div>
-      <div class="timeline-time">18:30</div>
-      <div class="timeline-card" style="border-color:rgba(249,202,36,0.15);">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="font-size:1rem;">🏨</span>
-          <div style="font-size:0.9rem;font-weight:600;color:var(--text);">Felix by STX Hotel</div>
-        </div>
-        <div style="font-size:16px;color:var(--text-muted);margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">拿行李，準備回家 🎒</div>
-      </div>
-    </div>
-
-    <!-- 🚊 飯店 → 金海機場（逆向） -->
-    <div class="timeline-item">
-      <div class="timeline-dot" style="background:linear-gradient(135deg,#56ccf2,#c084fc);box-shadow:0 0 10px rgba(86,204,242,0.5);"></div>
-      <div class="timeline-card" style="border-color:rgba(192,132,252,0.2);">
-        <div style="font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:#c084fc;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:10px;">🏨 飯店 → 機場</div>
-
-        <!-- 第一段：地鐵 -->
-        <div style="display:flex;align-items:flex-start;gap:10px;">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div style="width:32px;height:32px;border-radius:8px;background:rgba(86,204,242,0.12);border:1px solid rgba(86,204,242,0.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🚊</div>
-            <div style="width:1px;height:36px;background:linear-gradient(180deg,rgba(86,204,242,0.4),rgba(192,132,252,0.4));margin:3px 0;"></div>
-          </div>
-          <div style="flex:1;padding-top:4px;">
-            <div style="font-size:16px;font-weight:600;color:#56ccf2;font-family:'Space Grotesk',sans-serif;">地鐵 2 號線</div>
-            <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">海雲台站 → 沙上站</div>
-          </div>
-        </div>
-
-        <!-- 第二段：輕軌 -->
-        <div style="display:flex;align-items:flex-start;gap:10px;margin-top:2px;">
-          <div style="width:32px;height:32px;border-radius:8px;background:rgba(192,132,252,0.15);border:1px solid rgba(192,132,252,0.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🚝</div>
-          <div style="flex:1;padding-top:4px;">
-            <div style="font-size:16px;font-weight:600;color:#c084fc;font-family:'Space Grotesk',sans-serif;">釜山金海輕軌</div>
-            <div style="font-size:16px;color:var(--text-muted);margin-top:2px;">沙上站 → 金海國際機場</div>
-          </div>
-        </div>
-
-        <div style="font-size:16px;color:var(--text-muted);margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05);">📌 最遲 20:00 前抵達機場｜車程約 1H</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div style="margin-top:16px;">
-    <div class="flight-card return" style="margin-bottom:0;">
-      <div class="flight-header">
-        <span class="flight-tag return">回程</span>
-        <span class="flight-number">ZE983 ｜ 22:00 起飛</span>
-      </div>
-      <div style="font-size:16px;color:var(--text-muted);line-height:1.6;">
-        🛫 金海機場 22:00 → 桃園 T1 00:20 (+1)
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
-<div class="footer">
-  <span class="footer-flag">🇰🇷</span>
-  부산이 기다린다 · 釜山等著你<br>
-  <span style="opacity:0.4;font-size:16px;">2026.05.09 – 05.11</span>
-</div>
-
-</body>
-</html>
+$('dcards').onclick=e=>{const b=e.target.closest('button[data-act]');if(!b)return;const t=b.dataset.t,k=b.dataset.act;
+ if(k==='go')runGo(t);else if(k==='all')runAll(t);
+ else{if(!undoArm[t]){undoArm[t]=1;drawUI();return}S.draws[t]=[];save();undoArm[t]=0;$('roll-'+t).textContent='—';drawUI()}};
+
+function buildRpt(){
+ const pl=(a,n=4)=>a.length?`<div class="gl" style="grid-template-columns:repeat(${n},1fr)">`+a.map(u=>`<span class="pl">${u}</span>`).join('')+'</div>':'無';
+ let h=`<h1>碧瑤天鑽　${S.year}年度 機車位抽籤結果</h1><div class="rm">列印時間：${new Date().toLocaleString('zh-TW',{hour12:false})}</div>`,first=true;
+ ['n','h'].forEach(t=>{
+  const D=S.draws[t];
+  if(!D.length&&!S.cap[t])return;
+  h+=`<section class="${first?'':'pg'}"><h2>${T[t]}　車位 ${S.cap[t]} 個・已中籤 ${won(t)}・剩餘 ${rem(t)}</h2>`;first=false;
+  if(!D.length)h+='<p class="rm">尚未抽籤</p>';
+  D.forEach(d=>{
+   h+=`<div class="rb"><div class="rh">第 ${d.round} 輪<span>${d.time||''}</span></div><table><tr><th>參加戶<br>${d.applicants} 戶</th><td>${pl(d.apps||[])}</td></tr><tr><th class="w">中籤戶<br>${d.winners.length} 戶</th><td class="w">${pl(d.winners)}</td></tr>${d.wait.length?`<tr><th>未中籤<br>${d.wait.length} 戶</th><td>${pl(d.wait)}</td></tr>`:''}</table></div>`});
+  const c={};D.forEach(d=>d.winners.forEach(u=>c[u]=(c[u]||0)+1));
+  const L=U.filter(u=>c[u]);
+  if(D.length)h+=`<div class="tot"><b>中籤戶總表（${L.length} 戶）</b>${pl(L.map(u=>u+(c[u]>1?'×'+c[u]:'')),4)}</div>`;
+  h+='</section>';
+ });
+ $('rpt').innerHTML=h;
+}
+window.addEventListener('beforeprint',buildRpt);
+function resUI(){
+ let h='';
+ ['n','h'].forEach(t=>{
+  const D=S.draws[t];
+  h+=`<div class="card"><h2>${T[t]}（總數 ${S.cap[t]}，已中籤 ${won(t)}）</h2>`;
+  if(!D.length)h+='<p class="mut">尚未抽籤</p>';
+  D.forEach(d=>{h+=`<p><b>第 ${d.round} 輪中籤（${d.winners.length}）</b> <span class="mut">${d.time||''}</span>：<br>${d.winners.map(u=>`<span class="chip w">${u}</span>`).join('')}</p>`});
+  
+  
+  const cnt={};D.forEach(d=>d.winners.forEach(u=>cnt[u]=(cnt[u]||0)+1));
+  
+  
+  const ks=Object.keys(cnt),no=U.filter(u=>(R(u,t).ex>0||R(u,t).r1)&&!cnt[u]);
+  if(D.length&&no.length)h+=`<p><b>登記但未中籤（${no.length} 戶）：</b><br>${no.map(u=>`<span class="chip">${u}</span>`).join('')}</p>`;
+  if(ks.length)h+=`<p class="mut">各戶取得車位數：${ks.map(u=>u+'×'+cnt[u]).join('、')}</p>`;
+  h+='</div>';
+ });
+ $('resbody').innerHTML=h;
+}
+let clrArm=false;
+$('clr').onclick=()=>{
+ if(!clrArm){clrArm=true;$('clr').textContent='會清空所有登記與抽籤結果，再按一次確認';return}
+ clrArm=false;$('clr').textContent='清除重填';
+ S.reg={};S.draws={n:[],h:[]};save();
+ document.querySelectorAll('#tb input,#tb1 input').forEach(i=>{if(i.type==='checkbox')i.checked=false;else i.value=0});
+ ['n','h'].forEach(t=>$('roll-'+t).textContent='—');stat();drawUI();
+};
+$('set').insertAdjacentHTML('beforeend','<div class="nx"><button class="pri big" data-go="draw">登記完成，前往公開抽籤 ➜</button></div>');
+$('draw').insertAdjacentHTML('beforeend','<div class="nx"><button class="pri big" data-go="res">抽完了，查看結果 ➜</button></div>');
+$('draw').lastElementChild.insertAdjacentHTML('beforebegin','<div id="warn" class="warn"></div>');
+const undone=()=>{const m=[];['n','h'].forEach(t=>{if(!S.cap[t]||!apps(t,1).length)return;const r=S.draws[t].length+1;if(!S.draws[t].length)m.push(T[t]+'還沒有抽籤');else if(rem(t)>0&&apps(t,r).length)m.push(T[t]+'還沒抽完（下一輪是第 '+r+' 輪）')});return m};
+document.addEventListener('click',e=>{const g=e.target.dataset&&e.target.dataset.go;if(!g)return;
+ if(g==='res'){const m=undone();if(m.length){$('warn').innerHTML='⚠ 還有車種沒抽完，'+m.join('、');return}}
+ $('warn').innerHTML='';
+ document.querySelector('nav button[data-tab="'+g+'"]').click();window.scrollTo(0,0)});
+stat();drawUI();
+</script></body></html>
