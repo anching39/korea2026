@@ -40,7 +40,9 @@ th{position:sticky;top:0;background:var(--card)}
 .fc{width:60px;text-align:center;font-size:15px;font-weight:600;color:var(--mut);background:rgba(128,128,128,.12)}
 .un{font-size:14px;color:var(--mut)}
 #tb tr:nth-child(even){background:rgba(128,128,128,.1)}
-nav{align-items:center}.ar{color:var(--mut);font-size:22px;font-weight:700}
+nav{align-items:center}.badge{font-size:14px;font-weight:600;color:#fff;background:var(--ac);border-radius:6px;padding:2px 10px;vertical-align:middle}
+.stp{border:1px solid var(--bd);background:var(--card);border-radius:8px;padding:6px 14px;opacity:.55;user-select:none;cursor:default}.stp.on{background:var(--ac);color:#fff;border-color:var(--ac);opacity:1}.stp.done{opacity:.85}.stp.done::after{content:" ✓"}
+.clrall{color:var(--bad);border-color:var(--bad)}.ar{color:var(--mut);font-size:22px;font-weight:700}
 .nx{text-align:center;margin:16px 0}.big{font-size:18px;padding:12px 28px}
 .warn{border:2px solid var(--bad);color:var(--bad);border-radius:8px;padding:12px;margin:12px 0;font-size:17px}.warn:empty{display:none}.warn button{margin-top:8px;margin-right:8px;font-size:16px}
 #rpt{display:none}
@@ -67,10 +69,8 @@ html,body{background:#fff!important}main{display:none!important}
 </style></head><body><main>
 <h1>天鑽 機車位抽籤系統</h1>
 <nav>
-<button data-tab="set" class="on">① 設定與登記</button>
-<span class="ar">➜</span><button data-tab="draw">② 公開抽籤</button>
-<span class="ar">➜</span><button data-tab="res">③ 結果</button>
-<button data-tab="rule" style="margin-left:auto">規則說明</button>
+<span class="stp on" data-step="1">① 設定與登記</span><span class="ar">➜</span><span class="stp" data-step="2">② 公開抽籤</span><span class="ar">➜</span><span class="stp" data-step="3">③ 結果</span>
+<button id="rulebtn" style="margin-left:auto">規則說明</button>
 </nav>
 
 <section id="set">
@@ -83,7 +83,7 @@ html,body{background:#fff!important}main{display:none!important}
 <div class="card"><h2>住戶登記（共 <span id="cnt"></span> 戶）</h2>
 <p class="mut">第一輪：每戶限一名代表。數字＝參加到第幾輪：勾選＝1（只參加第一輪），填 2＝參加第一、二輪，以此類推，0＝不參加。登記序號僅供核對，不代表順位。開始抽籤後請勿再修改登記。</p>
 <div class="row" id="stat" style="margin-bottom:8px;flex-direction:column;align-items:flex-start;gap:6px;font-size:18px;font-weight:600;color:var(--fg);border:2px solid var(--ac);border-radius:8px;padding:8px 14px"></div>
-<button id="clr" class="noprint" style="margin-bottom:8px">清除重填</button>
+<button id="clr" class="noprint clrall" style="margin-bottom:8px">清除重填</button>
 <div class="wrap"><table class="mx"><colgroup><col style="width:60px"><col><col><col><col></colgroup><tbody id="tb1"></tbody></table><table class="mx"><colgroup><col style="width:60px"><col><col><col><col></colgroup><thead>
 <tr><th></th><th>285號 A</th><th>293號 B</th><th>289號 C</th><th>291號 D</th></tr>
 
@@ -117,9 +117,9 @@ U.push('281-1F','283-1F','285-1F','287-1F','289-1F','212-1F');
 [285,289,291].forEach(n=>U.push(n+'-4F'));
 for(let f=5;f<=19;f++)[285,289,291,293].forEach(n=>{if(!(n===293&&f===12))U.push(n+'-'+f+'F')});
 const T={n:'一般機車',h:'重型機車'};
-let S={year:new Date().getFullYear()-1911,cap:{n:0,h:0},reg:{},draws:{n:[],h:[]}};
-try{const s=localStorage.getItem('tz-lot');if(s)S=Object.assign(S,JSON.parse(s))}catch(e){}
-const save=()=>{try{localStorage.setItem('tz-lot',JSON.stringify(S))}catch(e){}};
+let S={year:new Date().getFullYear()-1911,cap:{n:0,h:0},reg:{},draws:{n:[],h:[]},step:1,locked:false};
+try{const s=localStorage.getItem('tz-lot-B');if(s)S=Object.assign(S,JSON.parse(s))}catch(e){}
+const save=()=>{try{localStorage.setItem('tz-lot-B',JSON.stringify(S))}catch(e){}};
 const $=id=>document.getElementById(id);
 function R(u,t){S.reg[u]=S.reg[u]||{};return S.reg[u][t]=S.reg[u][t]||{r1:0,ex:0,prev:0}}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=crypto.getRandomValues(new Uint32Array(1))[0]%(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
@@ -142,13 +142,23 @@ $('tb').innerHTML=Array.from({length:16},(_,i)=>i+4).map(f=>'<tr><td class="fc">
 $('tb1').onchange=$('tb').onchange=e=>{const i=e.target,u=i.closest('[data-u]').dataset.u;const g=R(u,i.dataset.t),k=i.dataset.k,box=i.closest('.t');if(k==='r1')g.ex=i.checked?Math.max(1,g.ex):0;else g.ex=Math.max(0,+i.value||0);g.r1=g.ex>0?1:0;box.querySelector('[data-k=r1]').checked=!!g.r1;box.querySelector('[data-k=ex]').value=g.ex;save();stat()};
 function stat(){$('stat').innerHTML=['n','h'].map(t=>{const mx=Math.max(1,...U.map(u=>R(u,t).ex)),nm=['一','二','三','四','五','六','七','八','九','十'];let s='';for(let r=1;r<=mx;r++)s+=`第${nm[r-1]||r}輪 <b style="color:var(--ac);font-size:24px">${apps(t,r).length}</b> 戶　`;return `<div><b>${T[t]}</b>：${s}</div>`}).join('')}
 
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));['set','draw','res','rule'].forEach(s=>$(s).hidden=s!==b.dataset.tab);if(b.dataset.tab==='draw')drawUI();if(b.dataset.tab==='res')resUI()});
+let ruleOpen=false;
+function view(){
+ const nm=['set','draw','res'],cu=nm[S.step-1];
+ nm.concat(['rule']).forEach(k=>$(k).hidden=ruleOpen?k!=='rule':k!==cu);
+ document.querySelectorAll('.stp').forEach(x=>{const k=+x.dataset.step;x.classList.toggle('on',!ruleOpen&&k===S.step);x.classList.toggle('done',k<S.step)});
+ $('rulebtn').classList.toggle('on',ruleOpen);
+ if(!ruleOpen){if(S.step===2)drawUI();if(S.step===3)resUI()}
+ if($('backbtn'))$('backbtn').hidden=!!S.locked;
+}
+function setStep(n){S.step=n;save();view();window.scrollTo(0,0)}
+$('rulebtn').onclick=()=>{ruleOpen=!ruleOpen;view();window.scrollTo(0,0)};
 
 let DL=null;try{if(window.claude)claude.use('downloads').then(d=>{DL=d}).catch(()=>{})}catch(e){}
 function logText(t,d){const ap=d.apps||[];return ['天鑽機車位抽籤紀錄','年度：民國 '+S.year+' 年','車種：'+T[t],'輪次：第 '+d.round+' 輪','抽籤時間：'+d.time,'車位總數：'+S.cap[t]+'　本輪前剩餘：'+d.before+'　本輪後剩餘：'+(d.before-d.winners.length),'抽籤方式：'+(ap.length<=d.before?'申請人數未超過剩餘車位，全部中籤':'瀏覽器密碼學亂數 crypto.getRandomValues + Fisher-Yates 洗牌'),'','申請名單（'+d.applicants+' 戶）：'+ap.join('、'),'','中籤名單（依抽出順序，'+d.winners.length+' 戶）：',...d.winners.map((u,i)=>(i+1)+'. '+u),'','本輪未中籤名單：',...(d.wait.length?[d.wait.join('、')]:['無'])].join('\n')}
 function saveLog(t,d){if(!DL)return;DL.save({filename:'抽籤LOG_'+T[t]+'_第'+d.round+'輪_'+d.time.replace(/\D/g,'')+'.txt',data:logText(t,d)}).catch(()=>{})}
 const busy={n:0,h:0},undoArm={n:0,h:0};
-$('dcards').innerHTML=['n','h'].map(t=>`<div class="card" id="c-${t}" style="border-left:6px solid var(--ac)"><h2 id="dt-${t}"></h2><div id="di-${t}"></div><div id="da-${t}" style="margin:8px 0"></div><div class="roll" id="roll-${t}">—</div><div class="row"><button class="pri" data-act="go" data-t="${t}" id="go-${t}">開始抽籤</button><button class="pri" data-act="all" data-t="${t}" id="all-${t}">一次抽完全部輪次</button><button data-act="undo" data-t="${t}" id="undo-${t}">重設抽籤</button></div><div id="lg-${t}" style="margin-top:14px"></div></div>`).join('');
+$('dcards').innerHTML=['n','h'].map(t=>`<div class="card" id="c-${t}" style="border-left:6px solid var(--ac)"><h2 id="dt-${t}"></h2><div id="di-${t}"></div><div id="da-${t}" style="margin:8px 0"></div><div class="roll" id="roll-${t}">—</div><div class="row"><button class="pri" data-act="go" data-t="${t}" id="go-${t}">開始抽籤</button><button class="pri" data-act="all" data-t="${t}" id="all-${t}">一次抽完全部輪次</button></div><div id="lg-${t}" style="margin-top:14px"></div></div>`).join('');
 function drawUI(){['n','h'].forEach(t=>{
  const r=S.draws[t].length+1,a=apps(t,r),m=rem(t);
  $('dt-'+t).textContent=`${T[t]}（民國 ${S.year} 年度）`;
@@ -157,15 +167,14 @@ function drawUI(){['n','h'].forEach(t=>{
  const dis=!!busy[t]||m<=0||a.length===0||S.cap[t]===0;
  $('go-'+t).disabled=$('all-'+t).disabled=dis;
  $('go-'+t).textContent=a.length>m&&m>0?`公開抽籤（第 ${r} 輪）`:`確認第 ${r} 輪結果`;
- $('undo-'+t).textContent=undoArm[t]?'再按一次確認重設':'重設抽籤';
  $('lg-'+t).innerHTML='<b>抽籤結果（含時間，可截圖）</b><br>'+(S.draws[t].map(d=>`<div style="margin:8px 0"><b>第 ${d.round} 輪</b>　<span class="mut">${d.time||''}</span><br>申請 ${d.applicants} 戶／中籤 ${d.winners.length}：${d.winners.map(u=>`<span class="chip w">${u}</span>`).join('')}${d.wait.length?`<br>本輪未中籤：${d.wait.map(u=>`<span class="chip">${u}</span>`).join('')}`:''}</div>`).join('')||'<span class="mut">尚未抽籤</span>');
-});if($('warn'))$('warn').innerHTML=''}
+});if($('warn'))$('warn').innerHTML='';if($('backbtn'))$('backbtn').hidden=!!S.locked}
 const stamp=()=>new Date().toLocaleString('zh-TW',{hour12:false});
 function roll(t,pool,done){let n=0;const iv=setInterval(()=>{$('roll-'+t).textContent=pool[Math.floor(Math.random()*pool.length)];if(++n>18){clearInterval(iv);done()}},70)}
 function runGo(t){
  const r=S.draws[t].length+1,a=apps(t,r),m=rem(t);
  if(busy[t]||m<=0||!a.length||!S.cap[t])return;
- busy[t]=1;drawUI();
+ busy[t]=1;S.locked=true;save();drawUI();
  const fin=()=>{
   let w,q=[];
   if(a.length<=m)w=a;else{const sh=shuffle(a);w=sh.slice(0,m);q=sh.slice(m)}
@@ -177,7 +186,7 @@ function runGo(t){
 function runAll(t){
  if(busy[t]||rem(t)<=0||!S.cap[t])return;
  const a1=apps(t,S.draws[t].length+1);if(!a1.length)return;
- busy[t]=1;drawUI();
+ busy[t]=1;S.locked=true;save();drawUI();
  roll(t,a1,()=>{
   let rounds=0,win=0;
   while(rem(t)>0){
@@ -190,8 +199,7 @@ function runAll(t){
  });
 }
 $('dcards').onclick=e=>{const b=e.target.closest('button[data-act]');if(!b)return;const t=b.dataset.t,k=b.dataset.act;
- if(k==='go')runGo(t);else if(k==='all')runAll(t);
- else{if(!undoArm[t]){undoArm[t]=1;drawUI();return}S.draws[t]=[];save();undoArm[t]=0;$('roll-'+t).textContent='—';drawUI()}};
+ if(k==='go')runGo(t);else if(k==='all')runAll(t);};
 
 function buildRpt(){
  const pl=(a,n=4)=>a.length?`<div class="gl" style="grid-template-columns:repeat(${n},1fr)">`+a.map(u=>`<span class="pl">${u}</span>`).join('')+'</div>':'無';
@@ -230,21 +238,26 @@ function resUI(){
  });
  $('resbody').innerHTML=h;
 }
-let clrArm=false;
-$('clr').onclick=()=>{
- if(!clrArm){clrArm=true;$('clr').textContent='會清空所有登記與抽籤結果，再按一次確認';return}
- clrArm=false;$('clr').textContent='清除重填';
- S.reg={};S.draws={n:[],h:[]};save();
+document.addEventListener('click',e=>{const b=e.target.closest('.clrall');if(!b)return;
+ b.dataset.t0=b.dataset.t0||b.textContent;
+ if(b.dataset.arm!=='1'){document.querySelectorAll('.clrall').forEach(x=>{x.dataset.arm='';x.textContent=x.dataset.t0||x.textContent});b.dataset.arm='1';b.textContent='會清空所有登記與抽籤結果，再按一次確認';return}
+ document.querySelectorAll('.clrall').forEach(x=>{x.dataset.arm='';x.textContent=x.dataset.t0||x.textContent});
+ S.reg={};S.draws={n:[],h:[]};S.locked=false;S.step=1;save();
  document.querySelectorAll('#tb input,#tb1 input').forEach(i=>{if(i.type==='checkbox')i.checked=false;else i.value=0});
- ['n','h'].forEach(t=>$('roll-'+t).textContent='—');stat();drawUI();
-};
+ ['n','h'].forEach(t=>$('roll-'+t).textContent='—');stat();drawUI();ruleOpen=false;view();window.scrollTo(0,0);
+});
 $('set').insertAdjacentHTML('beforeend','<div class="nx"><button class="pri big" data-go="draw">登記完成，前往公開抽籤 ➜</button></div>');
 $('draw').insertAdjacentHTML('beforeend','<div class="nx"><button class="pri big" data-go="res">抽完了，查看結果 ➜</button></div>');
 $('draw').lastElementChild.insertAdjacentHTML('beforebegin','<div id="warn" class="warn"></div>');
+$('draw').insertAdjacentHTML('afterbegin','<div id="backbtn" class="noprint" style="margin:0 0 12px"><button class="big" data-go="set">⬅ 回到登記頁修改<br><span style="font-size:14px;font-weight:400;color:var(--mut)">開始抽籤後就無法修改</span></button></div>');
+$('draw').insertAdjacentHTML('beforeend','<div class="nx noprint"><button class="clrall">清除全部資料，重新開始</button></div>');
+$('res').insertAdjacentHTML('beforeend','<div class="nx noprint"><button class="clrall">清除全部資料，重新開始</button></div>');
+$('rule').insertAdjacentHTML('beforeend','<div class="nx"><button class="pri big" id="rulebk">返回目前步驟</button></div>');
+$('rulebk').onclick=()=>{ruleOpen=false;view();window.scrollTo(0,0)};
 const undone=()=>{const m=[];['n','h'].forEach(t=>{if(!S.cap[t]||!apps(t,1).length)return;const r=S.draws[t].length+1;if(!S.draws[t].length)m.push(T[t]+'還沒有抽籤');else if(rem(t)>0&&apps(t,r).length)m.push(T[t]+'還沒抽完（下一輪是第 '+r+' 輪）')});return m};
-document.addEventListener('click',e=>{const g=e.target.dataset&&e.target.dataset.go;if(!g)return;
+document.addEventListener('click',e=>{const gb=e.target.closest&&e.target.closest('[data-go]'),g=gb&&gb.dataset.go;if(!g)return;
  if(g==='res'){const m=undone();if(m.length){$('warn').innerHTML='⚠ 還有車種沒抽完，'+m.join('、');return}}
  $('warn').innerHTML='';
- document.querySelector('nav button[data-tab="'+g+'"]').click();window.scrollTo(0,0)});
-stat();drawUI();
+ setStep(g==='draw'?2:g==='res'?3:1)});
+stat();drawUI();view();
 </script></body></html>
